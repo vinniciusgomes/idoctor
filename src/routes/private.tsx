@@ -6,9 +6,9 @@ const PrivateRoute: React.FC<{
   path: string;
   exact: boolean;
 }> = (props) => {
-  const condition = true;
+  const isAuthenticated = true;
 
-  return condition ? (
+  return isAuthenticated ? (
     <Route path={props.path} exact={props.exact} component={props.component} />
   ) : (
     <Redirect to="/page/login" />
