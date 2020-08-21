@@ -7,7 +7,7 @@ const PublicRoutes: React.FC<{
   exact?: boolean;
   location?: React.FC;
 }> = (props) => {
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return isAuthenticated ? (
     <Redirect to={{ pathname: "/", state: { from: props.location } }} />
