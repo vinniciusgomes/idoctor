@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
-import { routerMiddleware } from "connected-react-router";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware } from 'connected-react-router';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import rootReducer from "./ducks";
-import rootSaga from "./sagas";
-import history from "../routes/history";
+import rootReducer from './ducks';
+import rootSaga from './sagas';
+import history from '../routes/history';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 

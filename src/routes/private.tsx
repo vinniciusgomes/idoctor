@@ -1,11 +1,11 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute: React.FC<{
   component: React.FC;
   path: string;
   exact: boolean;
-}> = (props) => {
+}> = props => {
   const isAuthenticated = false;
 
   return isAuthenticated ? (

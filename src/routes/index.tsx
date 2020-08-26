@@ -1,11 +1,11 @@
-import React from "react";
-import { Switch, BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { Switch, BrowserRouter } from 'react-router-dom';
 
-import SignIn from "../pages/Auth/SignIn";
-import Dashboard from "../pages/Dashboard";
+import SignIn from '../pages/Auth/SignIn';
+import Dashboard from '../pages/Dashboard';
 
-import Private from "./private";
-import Public from "./public";
+import Private from './private';
+import Public from './public';
 
 const Routes = () => (
   <BrowserRouter>
