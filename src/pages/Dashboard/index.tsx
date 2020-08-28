@@ -1,10 +1,14 @@
 import React from 'react';
+
 import { Container } from './styles';
 
-export default function Dashboard() {
+const Home: React.FC = () => {
   return (
     <Container>
-      <h1>Dashboard</h1>
+      <h1>Architecture Ref ReactJS</h1>
+      <p>A ReactJS + TypeScript structure.</p>
     </Container>
   );
-}
+};
+
+export default Home;

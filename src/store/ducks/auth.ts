@@ -1,5 +1,4 @@
 import { createReducer, createActions } from 'reduxsauce';
-import Immutable from 'seamless-immutable';
 
 // Types & Actions Creators
 const { Types, Creators } = createActions({
@@ -11,17 +10,18 @@ export const AuthTypes = Types;
 export default Creators;
 
 // Initial State
-export const INITIAL_STATE = Immutable({
-  signedIn: !!localStorage.getItem('@Omni:token'),
-  token: localStorage.getItem('@Omni:token') || null,
-});
+export const INITIAL_STATE = {
+  // replace true for !!localStorage.getItem('access_token')
+  authenticated: true,
+  token: localStorage.getItem('access_token') || null,
+};
 
 // Reducers
 interface SuccessProps {
   token: string;
 }
 export const success = (state: any, { token }: SuccessProps) =>
-  state.merge({ signedIn: true, token });
+  state.merge({ authenticated: true, token });
 
 // Reducers to types
 export const reducer = createReducer(INITIAL_STATE, {
