@@ -6,8 +6,8 @@ import { ThemeProvider } from 'styled-components';
 
 import Routes from './routes';
 import { store, persistor } from './store';
-import GlobalStyle from './assets/styles/Global';
-import theme from './assets/styles/Theme';
+import GlobalStyle from './styles/global';
+import theme from './styles/Theme';
 
 function App() {
   return (

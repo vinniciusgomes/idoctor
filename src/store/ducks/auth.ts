@@ -12,7 +12,7 @@ export default Creators;
 // Initial State
 export const INITIAL_STATE = {
   // replace true for !!localStorage.getItem('access_token')
-  authenticated: true,
+  authenticated: false,
   token: localStorage.getItem('access_token') || null,
 };
 
