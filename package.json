@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "connected-react-router": "^6.8.0",
     "history": "^5.0.0",
+    "polished": "^3.6.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

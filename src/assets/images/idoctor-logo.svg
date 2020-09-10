@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="315.519" height="93.773" viewBox="0 0 315.519 93.773">
+  <g id="Grupo_325" data-name="Grupo 325" transform="translate(-38 -23.485)">
+    <g id="doctor" transform="translate(38 23.485)">
+      <path id="Caminho_730" data-name="Caminho 730" d="M131.362,82.281h-8.1V67.742A25.323,25.323,0,0,0,145.9,42.611V25.58a3.06,3.06,0,0,0-3.115-3.115h-7.269V28.7h4.154V42.611a19.013,19.013,0,0,1-19,19h-1.454a19.013,19.013,0,0,1-19-19V28.7h4.465V22.465H97.093a3.06,3.06,0,0,0-3.115,3.115V42.611a25.293,25.293,0,0,0,23.054,25.131V82.281H106.958a14.874,14.874,0,0,0-10.385,4.258,14.423,14.423,0,0,0-4.362,10.488,14.825,14.825,0,0,0,14.85,14.746h1.454a14.8,14.8,0,0,0,14.746-14.746V88.511h8.1a9.6,9.6,0,0,1,0-6.231ZM117.031,97.027a8.554,8.554,0,0,1-8.515,8.515h-1.454a8.446,8.446,0,0,1-8.619-8.515A8.151,8.151,0,0,1,100.935,91a8.318,8.318,0,0,1,6.023-2.492h10.073v8.515Z" transform="translate(-92.212 -18)" fill="#fff"/>
+      <g id="Grupo_26" data-name="Grupo 26" transform="translate(11.423)">
+        <path id="Caminho_731" data-name="Caminho 731" d="M291.1,289.959a9.87,9.87,0,0,0-9.242,6.646,9.607,9.607,0,0,0,0,6.231,9.87,9.87,0,0,0,9.242,6.646,9.762,9.762,0,1,0,0-19.523Z" transform="translate(-255.17 -232.324)" fill="#7081fa"/>
+        <path id="Caminho_732" data-name="Caminho 732" d="M290.182,3.115a3.115,3.115,0,0,0-6.231,0v8.723a3.115,3.115,0,1,0,6.231,0V3.115Z" transform="translate(-257.263)" fill="#7081fa"/>
+        <path id="Caminho_733" data-name="Caminho 733" d="M149.682,11.838a3.115,3.115,0,0,0,6.231,0V3.115a3.115,3.115,0,0,0-6.231,0v8.723Z" transform="translate(-149.682)" fill="#7081fa"/>
+      </g>
+    </g>
+    <text id="iDoctor" transform="translate(124.519 92.485)" fill="#fff" font-size="61" font-family="Montserrat-SemiBold, Montserrat" font-weight="600" letter-spacing="-0.012em"><tspan x="0" y="0">iDoctor</tspan></text>
+  </g>
+</svg>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 import signInBackgroundImg from '../../../assets/images/sign-in-background.png';
 
@@ -57,15 +58,17 @@ export const Content = styled.div`
         color: #ffffff;
         font-size: 22px;
         font-weight: 600;
-
         width: 400px;
         height: 65px;
-
         border-radius: 5px;
         box-shadow: 0px 0px 20px #eceff929;
-
         margin-top: 70px;
         margin-bottom: 30px;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: ${shade(0.2, '#7081fa')};
+        }
       }
 
       div {
@@ -92,9 +95,15 @@ export const Content = styled.div`
           font-size: 20px;
           font-weight: 600;
 
+          transition: border-color 0.2s;
+
           &::placeholder {
             color: #b5bcc7;
             font-weight: 400;
+          }
+
+          &:hover {
+            border-color: #7081fa;
           }
         }
       }
@@ -130,7 +139,69 @@ export const Content = styled.div`
 `;
 
 export const Background = styled.div`
-  flex: 1;
   background: url(${signInBackgroundImg}) no-repeat center;
   background-size: cover;
+  padding: 50px 80px;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1;
+
+    img {
+      width: 300px;
+      margin-bottom: 70px;
+    }
+
+    h1 {
+      font-size: 55px;
+      color: #ffffff;
+      display: block;
+    }
+
+    span {
+      display: block;
+      margin-top: 30px;
+
+      font-size: 30px;
+      font-weight: 300;
+      color: #ffffff;
+    }
+
+    strong {
+      display: block;
+      margin-top: 50px;
+
+      font-size: 30px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+  }
+
+  footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      font-size: 25px;
+      color: #ffffff;
+    }
+
+    ul {
+      list-style: none;
+
+      display: flex;
+      align-items: center;
+
+      li > a {
+        color: #ffffff;
+        display: block;
+        margin-left: 20px;
+      }
+    }
+  }
 `;

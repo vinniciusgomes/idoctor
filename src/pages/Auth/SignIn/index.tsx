@@ -1,12 +1,39 @@
 import React from 'react';
 
 import vifeLogo from '../../../assets/images/vife-logo.svg';
+import idoctorLogo from '../../../assets/images/idoctor-logo.svg';
+
 import { Container, Background, Content } from './styles';
 
 const Home: React.FC = () => {
   return (
     <Container>
-      <Background />
+      <Background>
+        <main>
+          <img src={idoctorLogo} alt="iDoctor" />
+          <h1>Bem vindo</h1>
+          <span>
+            Sistema que organiza e agiliza sua clínica, tenha mais praticidade
+            no seu dia a dia com o software para clínicas mais fácil de usar.
+            Queremos o sucesso da sua clínica tanto quanto você!
+          </span>
+          <strong>O Software Médico preparado para a LGPD</strong>
+        </main>
+        <footer>
+          <span>© VIFE 2020 </span>
+          <ul>
+            <li>
+              <a href="#">Privacidade</a>
+            </li>
+            <li>
+              <a href="#">Ajuda</a>
+            </li>
+            <li>
+              <a href="#">Contato</a>
+            </li>
+          </ul>
+        </footer>
+      </Background>
       <Content>
         <header>
           <a href="#">Não possuí conta?</a>
