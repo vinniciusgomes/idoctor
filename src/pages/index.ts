@@ -1,4 +1,7 @@
 import SignIn from './Auth/SignIn';
 import Dashboard from './Dashboard';
+import Schedule from './Schedule';
+import Patients from './Patients';
+import Settings from './Settings';
 
-export default { Dashboard, SignIn };
+export { SignIn, Dashboard, Schedule, Patients, Settings };

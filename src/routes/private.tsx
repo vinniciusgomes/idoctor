@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 interface PropsDTO {
   component: React.FC;
   path: string;
-  exact: boolean;
+  exact?: boolean;
 }
 
 interface AuthReducer {
@@ -18,7 +18,7 @@ interface AuthReducer {
 const PrivateRoute: React.FC<{
   component: React.FC;
   path: string;
-  exact: boolean;
+  exact?: boolean;
 }> = ({ path, exact, component }: PropsDTO) => {
   const authenticated = useSelector<AuthReducer>(
     state => state.auth.authenticated,

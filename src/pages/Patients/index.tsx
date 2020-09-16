@@ -3,14 +3,14 @@ import Navbar from '../../components/Navbar';
 
 import { Container } from './styles';
 
-const Home: React.FC = () => {
+const Patients: React.FC = () => {
   return (
-    <Navbar pageSelected="dashboard">
+    <Navbar pageSelected="patients">
       <Container>
-        <h1>Dashboard</h1>
+        <h1>Patients</h1>
       </Container>
     </Navbar>
   );
 };
 
-export default Home;
+export default Patients;
