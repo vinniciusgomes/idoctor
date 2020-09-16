@@ -1,12 +1,12 @@
 import React from 'react';
+import Navbar from '../../components/Navbar';
 
 import { Container } from './styles';
 
 const Home: React.FC = () => {
   return (
     <Container>
-      <h1>Architecture Ref ReactJS</h1>
-      <p>A ReactJS + TypeScript structure.</p>
+      <Navbar />
     </Container>
   );
 };
