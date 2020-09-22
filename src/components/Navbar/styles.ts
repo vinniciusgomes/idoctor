@@ -21,7 +21,6 @@ export const NavbarContainer = styled.div`
 export const LogoContainer = styled.div`
   width: 100%;
   height: 90px;
-  border-bottom: 1px solid #f7f7f7;
 
   padding: 20px 40px;
 `;
@@ -107,5 +106,5 @@ export const Content = styled.div`
   width: calc(100vw - 270px);
   height: 100vh;
   background: ${props => props.theme.colors.background};
-  padding: 20px;
+  padding: 20px 40px;
 `;

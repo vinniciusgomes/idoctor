@@ -23,6 +23,7 @@ import {
   Content,
   PageItem,
 } from './styles';
+import Header from '../Header';
 
 interface NavbarProps {
   pageSelected: string;
@@ -111,7 +112,13 @@ const Navbar: React.FC<NavbarProps> = ({ pageSelected, children }) => {
           </button>
         </LogoutContainer>
       </NavbarContainer>
-      <Content>{children}</Content>
+      <Content>
+        <Header
+          userName="Dra. Lee Parker"
+          userPhoto="https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
+        />
+        {children}
+      </Content>
     </Container>
   );
 };
