@@ -9,8 +9,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.black};
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.black};
     -webkit-font-smoothing: antialiased;
   }
 
@@ -25,5 +25,19 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ffff;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #1d1d1d;
   }
 `;

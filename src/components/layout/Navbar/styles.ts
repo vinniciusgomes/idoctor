@@ -61,9 +61,8 @@ export const PageItem = styled.li<StylesProps>`
       color: #3f5368;
       margin-left: 20px;
 
-      ${props =>
-        props.selected &&
-        css`
+      ${(props) => props.selected
+        && css`
           color: #7081fa;
         `}
     }
@@ -105,6 +104,8 @@ export const LogoutContainer = styled.div`
 export const Content = styled.div`
   width: calc(100vw - 270px);
   height: 100vh;
-  background: ${props => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.background};
   padding: 20px 40px;
+
+  overflow-y: scroll !important;
 `;

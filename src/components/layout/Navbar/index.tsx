@@ -1,18 +1,18 @@
 import React, { useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import idoctorLogo from '../../assets/images/idoctor-logo-dark.svg';
-import dashboardIcon from '../../assets/images/dashboard-icon.svg';
-import dashboardIconSelected from '../../assets/images/dashboard-icon-selected.svg';
-import calendarIcon from '../../assets/images/calendar-icon.svg';
-import calendarIconSelected from '../../assets/images/calendar-icon-selected.svg';
-import patientsIcon from '../../assets/images/patients-icon.svg';
-import patientsIconSelected from '../../assets/images/patients-icon-selected.svg';
-import gearIcon from '../../assets/images/gear-icon.svg';
-import gearIconSelected from '../../assets/images/gear-icon-selected.svg';
-import chevronRightIcon from '../../assets/images/chevron-right-icon.svg';
-import chevronRightIconSelected from '../../assets/images/chevron-right-icon-selected.svg';
-import logoutIcon from '../../assets/images/logout-icon.svg';
+import idoctorLogo from '../../../assets/images/idoctor-logo-dark.svg';
+import dashboardIcon from '../../../assets/images/dashboard-icon.svg';
+import dashboardIconSelected from '../../../assets/images/dashboard-icon-selected.svg';
+import calendarIcon from '../../../assets/images/calendar-icon.svg';
+import calendarIconSelected from '../../../assets/images/calendar-icon-selected.svg';
+import patientsIcon from '../../../assets/images/patients-icon.svg';
+import patientsIconSelected from '../../../assets/images/patients-icon-selected.svg';
+import gearIcon from '../../../assets/images/gear-icon.svg';
+import gearIconSelected from '../../../assets/images/gear-icon-selected.svg';
+import chevronRightIcon from '../../../assets/images/chevron-right-icon.svg';
+import chevronRightIconSelected from '../../../assets/images/chevron-right-icon-selected.svg';
+import logoutIcon from '../../../assets/images/logout-icon.svg';
 
 import {
   Container,
@@ -78,7 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({ pageSelected, children }) => {
           <img src={idoctorLogo} alt="iDoctor Logo" />
         </LogoContainer>
         <PageList>
-          {pages.map(page => (
+          {pages.map((page) => (
             <PageItem
               key={page.id}
               selected={pageSelected === page.slug && true}
