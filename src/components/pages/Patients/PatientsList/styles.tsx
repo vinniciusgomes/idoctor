@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Item = styled.li`
   width: 100%;
+  background: #fff;
   border-bottom: 1px solid #eef0f2;
   padding-bottom: 20px;
 

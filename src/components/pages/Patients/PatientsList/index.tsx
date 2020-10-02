@@ -86,24 +86,32 @@ const patientsMock = [
   },
 ];
 
-const PatientsList: React.FC = () => (
+interface ListProps {
+  max?: number;
+}
+
+const PatientsList: React.FC<ListProps> = ({ max = 10 }) => (
   <Container>
     <ul>
-      {patientsMock.map((patient) => (
-        <Item key={patient.id}>
-          <div>
-            <img src={patient.avatar} alt={patient.name} />
-            <span>{patient.name}</span>
-          </div>
-          <div>
-            <span>{patient.lastAppointment}</span>
-          </div>
-          <div>
-            <span>{patient.nextAppointment}</span>
-          </div>
-          <FiMoreVertical color="#D6DADF" size={20} />
-        </Item>
-      ))}
+      {patientsMock.map((patient, index) => {
+        if (index <= max - 1) {
+          return (
+            <Item key={patient.id}>
+              <div>
+                <img src={patient.avatar} alt={patient.name} />
+                <span>{patient.name}</span>
+              </div>
+              <div>
+                <span>{patient.lastAppointment}</span>
+              </div>
+              <div>
+                <span>{patient.nextAppointment}</span>
+              </div>
+              <FiMoreVertical color="#D6DADF" size={20} />
+            </Item>
+          );
+        }
+      })}
     </ul>
   </Container>
 );
