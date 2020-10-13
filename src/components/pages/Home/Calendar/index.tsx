@@ -2,8 +2,52 @@ import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import {
-  Container, DayNumber, DaysList, EventList, Header,
+  Container,
+  DayNumber,
+  DaysList,
+  Event,
+  EventList,
+  Header,
 } from './styles';
+
+const dayList = [
+  {
+    number: '11',
+    label: 'DOM',
+    status: true,
+  },
+  {
+    number: '12',
+    label: 'SEG',
+    status: false,
+  },
+  {
+    number: '13',
+    label: 'TER',
+    status: false,
+    selected: true,
+  },
+  {
+    number: '14',
+    label: 'QUA',
+    status: false,
+  },
+  {
+    number: '15',
+    label: 'QUI',
+    status: false,
+  },
+  {
+    number: '16',
+    label: 'SEX',
+    status: false,
+  },
+  {
+    number: '17',
+    label: 'SAB',
+    status: true,
+  },
+];
 
 const Calendar: React.FC = () => (
   <Container>
@@ -16,56 +60,43 @@ const Calendar: React.FC = () => (
     </Header>
 
     <DaysList>
-      <div>
-        <strong>DOM</strong>
-        <DayNumber disabled>
-          <span>03</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>SEG</strong>
-        <DayNumber>
-          <span>04</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>TER</strong>
-        <DayNumber>
-          <span>05</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>QUA</strong>
-        <DayNumber>
-          <span>06</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>QUI</strong>
-        <DayNumber selected>
-          <span>07</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>SEX</strong>
-        <DayNumber>
-          <span>08</span>
-        </DayNumber>
-      </div>
-      <div>
-        <strong>SAB</strong>
-        <DayNumber>
-          <span>09</span>
-        </DayNumber>
-      </div>
+      {dayList.map((day) => (
+        <div key={day.number}>
+          <strong>{day.label}</strong>
+          <DayNumber selected={day.selected} disabled={day.status}>
+            <span>{day.number}</span>
+          </DayNumber>
+        </div>
+      ))}
     </DaysList>
     <EventList>
       <div>
         <span>10:00</span>
-        <div>
+        <Event emergency>
           <strong>Liam J.</strong>
-          <span>11:00 Am - 12:00 Am</span>
-        </div>
+          <span>10:00 Am - 11:00 Am</span>
+        </Event>
+      </div>
+      <div>
+        <span>11:30</span>
+        <Event>
+          <strong>Courtney C.</strong>
+          <span>11:30 Am - 12:00 Pm</span>
+        </Event>
+      </div>
+      <div>
+        <span>13:00</span>
+        <Event>
+          <strong>Andreea P.</strong>
+          <span>13:00 Pm - 14:00 Pm</span>
+        </Event>
+      </div>
+      <div>
+        <span>14:50</span>
+        <Event>
+          <strong>Ansley P.</strong>
+          <span>14:50 Pm - 15:30 Pm</span>
+        </Event>
       </div>
     </EventList>
   </Container>

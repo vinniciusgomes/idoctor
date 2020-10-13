@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components';
 
-interface IDayProps {
+interface IDay {
   disabled?: boolean;
   selected?: boolean;
+}
+
+interface IEvent {
+  emergency?: boolean;
 }
 
 export const Container = styled.div`
@@ -62,7 +66,7 @@ export const DaysList = styled.div`
   }
 `;
 
-export const DayNumber = styled.div<IDayProps>`
+export const DayNumber = styled.div<IDay>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,12 +80,11 @@ export const DayNumber = styled.div<IDayProps>`
 
   span {
     font: normal normal normal 18px/24px Roboto;
-    color: ${props => (props.disabled ? '#ADB5C0' : '#2e2e2e')};
+    color: ${(props) => (props.disabled ? '#ADB5C0' : '#2e2e2e')};
   }
 
-  ${props =>
-    props.selected &&
-    css`
+  ${(props) => props.selected
+    && css`
       background: #7081fa;
 
       span {
@@ -92,30 +95,46 @@ export const DayNumber = styled.div<IDayProps>`
 
 export const EventList = styled.div`
   width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
   margin-top: 30px;
 
-  div {
-    flex: 1;
+  > div {
     display: flex;
 
     > span {
-      font-size: 18px;
-      font-weight: 500;
       color: #d6dadf;
-
-      width: 80px;
-    }
-
-    div {
-      width: 100%;
-      display: flex;
-
-      background: #fa7070;
+      font-weight: 500;
+      width: 65px;
+      font-size: 18px;
     }
   }
+
+  div + div {
+    margin-top: 20px;
+  }
+`;
+
+export const Event = styled.div<IEvent>`
+  flex: 1;
+  background: #7081fa;
+
+  padding: 15px 15px;
+
+  height: 80px;
+  border-radius: 8px;
+
+  strong {
+    flex: 1;
+    display: block;
+
+    color: #fff;
+  }
+
+  span {
+    color: #fdfdfe;
+  }
+
+  ${(props) => props.emergency
+    && css`
+      background: #fa7070;
+    `}
 `;
