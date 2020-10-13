@@ -38,8 +38,6 @@ export const ContentWrapper = styled.div`
 export const CalendarWrapper = styled.div`
   width: 100%;
   max-width: 550px;
-
-  background: green;
 `;
 
 export const WelcomeCard = styled.div`
@@ -74,6 +72,8 @@ export const WelcomeCard = styled.div`
 
     max-width: 400px;
   }
+
+  box-shadow: 0px 0px 10px #0000000d;
 `;
 
 export const WelcomeImage = styled.img`
@@ -88,6 +88,28 @@ export const AppointmentsListContainer = styled.div`
   width: 100%;
 
   margin-top: 30px;
+`;
+
+export const AppointmentsTitleContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    span {
+      display: block;
+      color: #3f5368;
+      font-weight: 500;
+      margin-right: 5px;
+    }
+  }
 `;
 
 export const ListContainer = styled.div`
@@ -127,6 +149,7 @@ export const ListContainer = styled.div`
 
       border-radius: 10px;
       padding: 15px 20px;
+      box-shadow: 0px 0px 10px #0000000d;
     }
   }
 

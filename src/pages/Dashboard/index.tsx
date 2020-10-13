@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiChevronLeft, FiChevronRight, FiCode } from 'react-icons/fi';
+import { FiArrowRight, FiCode } from 'react-icons/fi';
 
 import Navbar from '../../components/layout/Navbar';
 
@@ -8,6 +8,7 @@ import PatientsList from '../../components/pages/Patients/PatientsList';
 
 import {
   AppointmentsListContainer,
+  AppointmentsTitleContainer,
   CalendarWrapper,
   Container,
   ContentWrapper,
@@ -17,6 +18,7 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
+import Calendar from '../../components/pages/Home/Calendar';
 
 const Home: React.FC = () => (
   <Navbar pageSelected="dashboard">
@@ -38,11 +40,18 @@ const Home: React.FC = () => (
               {' '}
               <b>8</b>
               {' '}
-              consultas hoje!
+              consultas
+              hoje!
             </span>
           </WelcomeCard>
           <AppointmentsListContainer>
-            <h1>Consultas</h1>
+            <AppointmentsTitleContainer>
+              <h1>Consultas</h1>
+              <div>
+                <span>Ver todos</span>
+                <FiArrowRight color="#3F5368" />
+              </div>
+            </AppointmentsTitleContainer>
 
             <ListContainer>
               <header>
@@ -65,7 +74,9 @@ const Home: React.FC = () => (
             </ListContainer>
           </AppointmentsListContainer>
         </ContentWrapper>
-        <CalendarWrapper />
+        <CalendarWrapper>
+          <Calendar />
+        </CalendarWrapper>
       </Wrapper>
     </Container>
   </Navbar>

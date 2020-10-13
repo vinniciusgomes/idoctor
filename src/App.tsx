@@ -34,7 +34,8 @@ function App() {
                 }}
                 width={400}
               />
-              <span>Infelizmente sua resolução é menor do que a suportada</span>
+              <span>Infelizmente sua resolução é menor do que a suportada pela nossa aplicação!</span>
+              <b>Resolução minima</b>
             </NotSupported>
           </ConfigProvider>
         </ThemeProvider>
