@@ -2,7 +2,7 @@ import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import {
-  Container, DayNumber, DaysList, Header,
+  Container, DayNumber, DaysList, EventList, Header,
 } from './styles';
 
 const Calendar: React.FC = () => (
@@ -59,6 +59,15 @@ const Calendar: React.FC = () => (
         </DayNumber>
       </div>
     </DaysList>
+    <EventList>
+      <div>
+        <span>10:00</span>
+        <div>
+          <strong>Liam J.</strong>
+          <span>11:00 Am - 12:00 Am</span>
+        </div>
+      </div>
+    </EventList>
   </Container>
 );
 

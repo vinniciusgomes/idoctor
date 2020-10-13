@@ -76,16 +76,46 @@ export const DayNumber = styled.div<IDayProps>`
 
   span {
     font: normal normal normal 18px/24px Roboto;
-    color: ${(props) => (props.disabled ? '#ADB5C0' : '#2e2e2e')};
+    color: ${props => (props.disabled ? '#ADB5C0' : '#2e2e2e')};
   }
 
-  ${(props) => props.selected
-    && css`
+  ${props =>
+    props.selected &&
+    css`
       background: #7081fa;
 
       span {
         color: #fff;
       }
     `}
-F
+`;
+
+export const EventList = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 30px;
+
+  div {
+    flex: 1;
+    display: flex;
+
+    > span {
+      font-size: 18px;
+      font-weight: 500;
+      color: #d6dadf;
+
+      width: 80px;
+    }
+
+    div {
+      width: 100%;
+      display: flex;
+
+      background: #fa7070;
+    }
+  }
 `;
