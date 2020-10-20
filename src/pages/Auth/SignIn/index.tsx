@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import vifeLogo from '../../../assets/images/vife-logo.svg';
 import idoctorLogo from '../../../assets/images/idoctor-logo.svg';
@@ -6,6 +7,16 @@ import idoctorLogo from '../../../assets/images/idoctor-logo.svg';
 import { Container, Background, Content } from './styles';
 
 const Home: React.FC = () => {
+  const history = useHistory();
+
+  const handleSignIn = useCallback(() => {
+    localStorage.setItem(
+      'access_token',
+      '31203912-dsadas08312-dasdas-92112-12312312',
+    );
+    history.push('/');
+  }, []);
+
   return (
     <Container>
       <Background>
@@ -59,7 +70,9 @@ const Home: React.FC = () => {
                 id="password"
               />
             </div>
-            <button type="submit">Acessar</button>
+            <button type="submit" onClick={handleSignIn}>
+              Acessar
+            </button>
           </form>
           <a href="#">Esqueci minha senha</a>
         </main>

@@ -11,8 +11,7 @@ export default Creators;
 
 // Initial State
 export const INITIAL_STATE = {
-  // replace true for !!localStorage.getItem('access_token')
-  authenticated: true,
+  authenticated: !!localStorage.getItem('access_token'),
   token: localStorage.getItem('access_token') || null,
 };
 
@@ -20,8 +19,8 @@ export const INITIAL_STATE = {
 interface SuccessProps {
   token: string;
 }
-export const success = (state: any, { token }: SuccessProps) =>
-  state.merge({ authenticated: true, token });
+
+export const success = (state: any, { token }: SuccessProps) => state.merge({ authenticated: true, token });
 
 // Reducers to types
 export const reducer = createReducer(INITIAL_STATE, {

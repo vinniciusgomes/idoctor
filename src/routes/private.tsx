@@ -21,7 +21,7 @@ const PrivateRoute: React.FC<{
   exact?: boolean;
 }> = ({ path, exact, component }: PropsDTO) => {
   const authenticated = useSelector<AuthReducer>(
-    state => state.auth.authenticated,
+    (state) => state.auth.authenticated,
   );
 
   return authenticated ? (
