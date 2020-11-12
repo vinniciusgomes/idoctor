@@ -1,8 +1,7 @@
 import React from 'react';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, BrowserRouter } from 'react-router-dom';
 
-import Private from './private';
-import Public from './public';
+import Route from './Route';
 
 import {
   SignIn, Dashboard, Schedule, Patients, Settings,
@@ -12,10 +11,10 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/acessar" component={SignIn} />
-      <Route path="/" exact component={Dashboard} />
-      <Route path="/agenda" component={Schedule} />
-      <Route path="/pacientes" component={Patients} />
-      <Route path="/configuracoes" component={Settings} />
+      <Route path="/" exact component={Dashboard} isPrivate />
+      <Route path="/agenda" component={Schedule} isPrivate />
+      <Route path="/pacientes" component={Patients} isPrivate />
+      <Route path="/configuracoes" component={Settings} isPrivate />
     </Switch>
   </BrowserRouter>
 );

@@ -14,6 +14,9 @@ import chevronRightIcon from '../../../assets/images/chevron-right-icon.svg';
 import chevronRightIconSelected from '../../../assets/images/chevron-right-icon-selected.svg';
 import logoutIcon from '../../../assets/images/logout-icon.svg';
 
+import Header from '../Header';
+import { useAuth } from '../../../hooks/auth';
+
 import {
   Container,
   NavbarContainer,
@@ -23,14 +26,13 @@ import {
   Content,
   PageItem,
 } from './styles';
-import Header from '../Header';
 
 interface NavbarProps {
   pageSelected: string;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ pageSelected, children }) => {
-  const history = useHistory();
+  const { signOut } = useAuth();
   const pages = [
     {
       id: 1,
@@ -67,8 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ pageSelected, children }) => {
   ];
 
   const handleLogOut = useCallback(() => {
-    localStorage.clear();
-    history.push('/acessar');
+    signOut();
   }, []);
 
   return (

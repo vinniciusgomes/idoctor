@@ -1,21 +1,32 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import vifeLogo from '../../../assets/images/vife-logo.svg';
 import idoctorLogo from '../../../assets/images/idoctor-logo.svg';
 
 import { Container, Background, Content } from './styles';
+import { useAuth } from '../../../hooks/auth';
 
 const Home: React.FC = () => {
   const history = useHistory();
+  const { signIn } = useAuth();
 
-  const handleSignIn = useCallback(() => {
-    localStorage.setItem(
-      'access_token',
-      '31203912-dsadas08312-dasdas-92112-12312312',
-    );
-    history.push('/');
-  }, []);
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = useCallback(
+    async (e) => {
+      e.preventDefault();
+
+      await signIn({
+        login,
+        password,
+      });
+
+      history.push('/');
+    },
+    [login, password, signIn, history],
+  );
 
   return (
     <Container>
@@ -59,6 +70,7 @@ const Home: React.FC = () => {
                 placeholder="seuemail@exemplo.com"
                 name="email"
                 id="email"
+                onChange={(e) => setLogin(e.target.value)}
               />
             </div>
             <div>
@@ -68,6 +80,7 @@ const Home: React.FC = () => {
                 placeholder="**********"
                 name="password"
                 id="password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <button type="submit" onClick={handleSignIn}>

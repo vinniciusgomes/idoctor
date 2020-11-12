@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  @media (max-width: 1500px) {
-    display: none;
-  }
-`;
+export const Container = styled.div``;
 
 export const NotSupported = styled.div`
   display: none;
