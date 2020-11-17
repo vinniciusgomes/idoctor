@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, BrowserRouter } from 'react-router-dom';
 
 import Route from './Route';
 
