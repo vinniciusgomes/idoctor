@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@shared/*": ["shared/*"],
+      "@doctor/*": ["modules/Doctor/*"],
+      "@manager/*": ["modules/Manager/*"],
+      "@secretary/*": ["modules/Secretary/*"]
+    }
+  }
+}

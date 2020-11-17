@@ -1,12 +1,16 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
     "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:import/typescript"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -20,7 +24,13 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "import",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
     "no-use-before-define": "off",
     "camelcase": "off",
@@ -29,6 +39,8 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
+    "array-callback-return": "off",
+    "consistent-return": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -39,8 +51,39 @@
     ]
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "typescript": {}
-    }
-  }
-}
+      "typescript": {
+        "directory": "."
+      },
+      "node": {
+        "extensions": [".ts", ".tsx", ".js", ".jsx"],
+      },
+      "babel-plugin-root-import": {
+        "paths": [
+          {
+            "rootPathSuffix": "src",
+          },
+          {
+            "rootPathPrefix": "@shared/",
+            "rootPathSuffix": "src/shared/",
+          },
+          {
+            "rootPathPrefix": "@doctor/",
+            "rootPathSuffix": "src/modules/Doctor",
+          },
+          {
+            "rootPathPrefix": "@manager/",
+            "rootPathSuffix": "src/modules/Manager",
+          },
+          {
+            "rootPathPrefix": "@secretary/",
+            "rootPathSuffix": "src/modules/Secretary",
+          },
+        ]
+      },
+    },
+  },
+};
