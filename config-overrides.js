@@ -14,15 +14,15 @@ module.exports = override(
         },
         {
           rootPathPrefix: '@doctor/',
-          rootPathSuffix: 'src/modules/Doctor',
+          rootPathSuffix: 'src/modules/doctor',
         },
         {
           rootPathPrefix: '@manager/',
-          rootPathSuffix: 'src/modules/Manager',
+          rootPathSuffix: 'src/modules/manager',
         },
         {
           rootPathPrefix: '@secretary/',
-          rootPathSuffix: 'src/modules/Secretary',
+          rootPathSuffix: 'src/modules/secretary',
         },
       ],
     },

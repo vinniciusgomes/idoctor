@@ -10,14 +10,10 @@ import { useAuth } from '@shared/hooks/auth';
 const Routes = () => {
   const { user } = useAuth();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/acessar" component={SignIn} />
+        {!user && <Route path="/" component={SignIn} />}
         {user && user.type === 1 && <DoctorRoutes />}
       </Switch>
     </BrowserRouter>

@@ -4,9 +4,9 @@
     "paths": {
       "@/*": ["*"],
       "@shared/*": ["shared/*"],
-      "@doctor/*": ["modules/Doctor/*"],
-      "@manager/*": ["modules/Manager/*"],
-      "@secretary/*": ["modules/Secretary/*"]
+      "@doctor/*": ["modules/doctor/*"],
+      "@manager/*": ["modules/manager/*"],
+      "@secretary/*": ["modules/secretary/*"]
     }
   }
 }
