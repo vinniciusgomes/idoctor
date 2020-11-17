@@ -26,7 +26,7 @@ const Patients: React.FC = () => (
         </header>
 
         <main>
-          {/* <PatientsList /> */}
+          <PatientsList />
         </main>
 
         <footer>

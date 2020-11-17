@@ -1,47 +1,65 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
 
-interface User {
+interface IDoctor {
+  id: string;
+  speciality: string;
+  start_time: string;
+  end_time: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+}
+
+interface IUser {
   avatar: string;
   clinic_id: string;
   id: string;
   login: string;
   name: string;
   type: number;
+  doctor?: IDoctor;
   created_at: string;
   updated_at: string;
 }
 
-interface AuthState {
+interface IAuthState {
   token: string;
-  user: User;
+  user: IUser;
+  doctor?: IDoctor;
 }
 
-interface SignInCredentials {
+interface ISignInCredentials {
   login: string;
   password: string;
 }
 
-interface AuthContextData {
-  user: User;
-  signIn(credentials: SignInCredentials): Promise<void>;
+interface IAuthContextData {
+  user: IUser;
+  doctor?: IDoctor;
+  signIn(credentials: ISignInCredentials): Promise<void>;
   signOut(): void;
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
-  const [data, setData] = useState<AuthState>(() => {
+  const [data, setData] = useState<IAuthState>(() => {
     const token = localStorage.getItem('@iDoctor:token');
     const user = localStorage.getItem('@iDoctor:user');
+    const doctor = localStorage.getItem('@iDoctor:doctor');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
 
+      if (doctor) {
+        return { token, user: JSON.parse(user), doctor: JSON.parse(doctor) };
+      }
+
       return { token, user: JSON.parse(user) };
     }
 
-    return {} as AuthState;
+    return {} as IAuthState;
   });
 
   const signIn = useCallback(async ({ login, password }) => {
@@ -50,21 +68,26 @@ const AuthProvider: React.FC = ({ children }) => {
       password,
     });
 
-    const { token, user } = response.data;
+    const { token, user, doctor } = response.data;
 
     localStorage.setItem('@iDoctor:token', token);
     localStorage.setItem('@iDoctor:user', JSON.stringify(user));
 
+    if (doctor) {
+      localStorage.setItem('@iDoctor:doctor', JSON.stringify(doctor));
+    }
+
     api.defaults.headers.authorization = `Bearer ${token}`;
 
-    setData({ token, user });
+    setData({ token, user, doctor });
   }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@iDoctor:token');
     localStorage.removeItem('@iDoctor:user');
+    localStorage.removeItem('@iDoctor:doctor');
 
-    setData({} as AuthState);
+    setData({} as IAuthState);
   }, []);
 
   return (
@@ -73,6 +96,7 @@ const AuthProvider: React.FC = ({ children }) => {
         user: data.user,
         signIn,
         signOut,
+        doctor: data.doctor,
       }}
     >
       {children}
@@ -80,7 +104,7 @@ const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-function useAuth(): AuthContextData {
+function useAuth(): IAuthContextData {
   const context = useContext(AuthContext);
 
   return context;

@@ -25,7 +25,13 @@ const Home: React.FC = () => {
           password,
         });
       } catch (err) {
-        toast.error(err.response.data.message);
+        if (err.response.data) {
+          return toast.error(err.response.data.message);
+        }
+
+        return toast.error(
+          'Ocorreu um erro interno. Tente novamente mais tarde',
+        );
       }
 
       history.push('/');

@@ -1,14 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
-import { toast } from 'react-toastify';
+
+import Navbar from '@shared/components/Navbar';
 
 import welcomeImage from '@shared/assets/images/dr-woman.svg';
 import PatientsList from '@doctor/components/Patients/PatientsList';
-
-import Calendar from '@doctor/components/Home/Calendar';
-import Navbar from '@shared/components/Navbar';
-import { useAuth } from '@shared/hooks/auth';
-import api from '@shared/services/api';
 
 import {
   AppointmentsListContainer,
@@ -22,31 +18,11 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
+import Calendar from '@doctor/components/Home/Calendar';
+import { useAuth } from '@shared/hooks/auth';
 
 const Home: React.FC = () => {
-  const { user, doctor } = useAuth();
-
-  const [appointments, setAppointments] = useState([]);
-
-  useEffect(() => {
-    handleGetAppointments();
-  }, [user]);
-
-  const handleGetAppointments = useCallback(async () => {
-    try {
-      const response = await api.get(
-        `appointments/doctor/${doctor?.id}?date=2020-11-16&limit=6`,
-      );
-
-      setAppointments(response.data);
-    } catch (err) {
-      if (err.response.data) {
-        return toast.error(err.response.data.message);
-      }
-
-      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
-    }
-  }, [user]);
+  const { user } = useAuth();
 
   return (
     <Navbar pageSelected="dashboard">
