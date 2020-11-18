@@ -8,19 +8,19 @@ import PatientItem from '@doctor/components/Patients/PatientItem';
 import { Container, ListContainer } from './styles';
 import api from '@shared/services/api';
 import { IPaginationProperties, IPatient } from './interfaces';
-import { Skeleton } from 'antd';
+import { Empty, Pagination, Skeleton } from 'antd';
 
 const Patients: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [patients, setPatients] = useState<IPatient[]>([]);
-  const [page, setPage] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [paginationProperties, setPaginationProperties] = useState<
     IPaginationProperties
   >();
 
   const getAppointments = useCallback(async () => {
     try {
-      const response = await api.get(`patients?page=${page}`);
+      const response = await api.get(`patients?page=${pageNumber}`);
 
       setPatients(response.data);
     } catch (err) {
@@ -32,14 +32,17 @@ const Patients: React.FC = () => {
 
       return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
     }
-  }, [page]);
+  }, [pageNumber]);
 
   const getPaginationProperties = useCallback(async () => {
     try {
       const response = await api.get(`patients/pagination`);
 
       setPaginationProperties(response.data);
-      setLoading(false);
+
+      if (response.data) {
+        setLoading(false);
+      }
     } catch (err) {
       setLoading(false);
       if (err.response) {
@@ -48,25 +51,15 @@ const Patients: React.FC = () => {
 
       return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
     }
-  }, []);
-
-  const handleAddPage = useCallback(() => {
-    setPage(state => state + 1);
-  }, []);
-
-  const handleRemovePage = useCallback(() => {
-    if (page > 1) {
-      setPage(state => state - 1);
-    }
-  }, [page]);
-
-  useEffect(() => {
-    getAppointments();
-  }, [getAppointments, page]);
+  }, [paginationProperties]);
 
   useEffect(() => {
     getPaginationProperties();
-  }, []);
+  }, [pageNumber]);
+
+  useEffect(() => {
+    getAppointments();
+  }, [getAppointments, pageNumber]);
 
   return (
     <Navbar pageSelected="patients">
@@ -91,6 +84,8 @@ const Patients: React.FC = () => {
                   id={patient.id}
                 />
               ))}
+
+              {patients.length === 0 && <Empty description="" />}
             </main>
 
             {paginationProperties && (
@@ -100,21 +95,11 @@ const Patients: React.FC = () => {
                   <b>{paginationProperties.numberOfPatients}</b> pacientes
                 </span>
 
-                <div>
-                  <FiChevronLeft
-                    size={22}
-                    color="#D8DCE0"
-                    onClick={handleRemovePage}
-                  />
-                  <span>1</span>
-                  <span>2</span>
-                  <span>3</span>
-                  <FiChevronRight
-                    size={22}
-                    color="#D8DCE0"
-                    onClick={handleAddPage}
-                  />
-                </div>
+                <Pagination
+                  defaultCurrent={1}
+                  total={paginationProperties.numberOfPages}
+                  onChange={page => setPageNumber(page)}
+                />
               </footer>
             )}
           </ListContainer>

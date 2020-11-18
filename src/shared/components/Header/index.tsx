@@ -13,8 +13,6 @@ interface UserInfo {
 const Header: React.FC<UserInfo> = () => {
   const { user } = useAuth();
 
-  console.log(user);
-
   return (
     <Container>
       <Notification>

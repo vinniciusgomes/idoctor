@@ -1,13 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Skeleton } from 'antd';
 
 import welcomeImage from '@shared/assets/images/dr-woman.svg';
-
-import Calendar from '@doctor/components/Home/Calendar';
 import Navbar from '@shared/components/Navbar';
 import { useAuth } from '@shared/hooks/auth';
+import Loading from '@shared/components/Loading';
 import api from '@shared/services/api';
+import Calendar from '@doctor/components/Home/Calendar';
+import AppointmentsItem from '@doctor/components/Home/Appointments';
+
+import { IAppointments } from './interfaces';
 
 import {
   AppointmentsListContainer,
@@ -21,17 +27,11 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
-import { IAppointments } from './interfaces';
-import AppointmentsItem from '../../components/Home/Appointments';
-import { format } from 'date-fns';
-import { Link } from 'react-router-dom';
-import Loading from '@shared/components/Loading';
-import { Skeleton } from 'antd';
 
 const Home: React.FC = () => {
   const { user, doctor } = useAuth();
-  const [loading, setLoading] = useState(true);
 
+  const [loading, setLoading] = useState(true);
   const [appointments, setAppointments] = useState<IAppointments[]>([]);
 
   const getAppointments = useCallback(async () => {
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
         `appointments/doctor/${doctor?.id}?date=${format(
           new Date(),
           'yyyy/MM/dd',
-        )}&limit=3`,
+        )}&limit=4`,
       );
 
       setAppointments(response.data);
@@ -113,18 +113,22 @@ const Home: React.FC = () => {
                   </header>
 
                   <main>
-                    {appointments.map(appointment => (
-                      <AppointmentsItem
-                        key={appointment.id}
-                        id={appointment.id}
-                        date={appointment.date}
-                        doctor={appointment.doctor}
-                        patient={appointment.patient}
-                        start_time={appointment.start_time}
-                        status={appointment.status}
-                        type={appointment.type}
-                      />
-                    ))}
+                    {appointments.map((appointment, index) => {
+                      if (index <= 2) {
+                        return (
+                          <AppointmentsItem
+                            key={appointment.id}
+                            id={appointment.id}
+                            date={appointment.date}
+                            doctor={appointment.doctor}
+                            patient={appointment.patient}
+                            start_time={appointment.start_time}
+                            status={appointment.status}
+                            type={appointment.type}
+                          />
+                        );
+                      }
+                    })}
                   </main>
                 </ListContainer>
               </AppointmentsListContainer>
