@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   flex: 1;
 
-  ul {
-    list-style: none;
-  }
+  margin-bottom: 20px;
 `;
 
 export const Item = styled.li`

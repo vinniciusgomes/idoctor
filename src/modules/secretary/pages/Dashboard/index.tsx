@@ -4,7 +4,7 @@ import { FiArrowRight, FiCode } from 'react-icons/fi';
 import Navbar from '@shared/components/Navbar';
 
 import welcomeImage from '@shared/assets/images/dr-woman.svg';
-import PatientsList from '@doctor/components/Patients/PatientsList';
+import PatientsList from '@secretary/components/Patients/PatientsList';
 
 import {
   AppointmentsListContainer,
@@ -18,7 +18,7 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
-import Calendar from '@doctor/components/Home/Calendar';
+import Calendar from '@secretary/components/Home/Calendar';
 import { useAuth } from '@shared/hooks/auth';
 
 const Home: React.FC = () => {

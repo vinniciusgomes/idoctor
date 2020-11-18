@@ -2,7 +2,7 @@ import React from 'react';
 import { FiChevronLeft, FiChevronRight, FiCode } from 'react-icons/fi';
 
 import Navbar from '@shared/components/Navbar';
-import PatientsList from '@doctor/components/Patients/PatientsList';
+import PatientsList from '@manager/components/Patients/PatientsList';
 
 import { Container, ListContainer } from './styles';
 

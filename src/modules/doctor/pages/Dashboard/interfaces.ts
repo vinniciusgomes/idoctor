@@ -1,12 +1,20 @@
 export interface IAppointments {
+  id: string;
   date: string;
   start_time: string;
   status: number;
   type: number;
-  doctor_id: string;
-  patient_id: string;
-  clinic_id: string;
-  id: string;
-  created_at: string;
-  updated_at: string;
+  patient: {
+    id: string;
+    avatar: string;
+    name: string;
+    email: string;
+    phone: string;
+    appointments: any;
+  };
+  doctor: {
+    id: string;
+    speciality: string;
+    user: { name: string };
+  };
 }

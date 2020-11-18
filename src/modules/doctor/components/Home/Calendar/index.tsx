@@ -1,3 +1,4 @@
+import { IAppointments } from '@/modules/doctor/pages/Dashboard/interfaces';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
@@ -49,7 +50,11 @@ const dayList = [
   },
 ];
 
-const Calendar: React.FC = () => (
+interface ICalendarProps {
+  appointments: IAppointments[];
+}
+
+const Calendar: React.FC<ICalendarProps> = ({ appointments }) => (
   <Container>
     <Header>
       <div>
@@ -60,7 +65,7 @@ const Calendar: React.FC = () => (
     </Header>
 
     <DaysList>
-      {dayList.map((day) => (
+      {dayList.map(day => (
         <div key={day.number}>
           <strong>{day.label}</strong>
           <DayNumber selected={day.selected} disabled={day.status}>
@@ -70,34 +75,15 @@ const Calendar: React.FC = () => (
       ))}
     </DaysList>
     <EventList>
-      <div>
-        <span>10:00</span>
-        <Event emergency>
-          <strong>Liam J.</strong>
-          <span>10:00 Am - 11:00 Am</span>
-        </Event>
-      </div>
-      <div>
-        <span>11:30</span>
-        <Event>
-          <strong>Courtney C.</strong>
-          <span>11:30 Am - 12:00 Pm</span>
-        </Event>
-      </div>
-      <div>
-        <span>13:00</span>
-        <Event>
-          <strong>Andreea P.</strong>
-          <span>13:00 Pm - 14:00 Pm</span>
-        </Event>
-      </div>
-      <div>
-        <span>14:50</span>
-        <Event>
-          <strong>Ansley P.</strong>
-          <span>14:50 Pm - 15:30 Pm</span>
-        </Event>
-      </div>
+      {appointments.map(appointment => (
+        <div key={appointment.id}>
+          <span>{appointment.start_time}</span>
+          <Event emergency={appointment.type === 3 ? true : false}>
+            <strong>{appointment.patient.name}</strong>
+            <span>{appointment.start_time}</span>
+          </Event>
+        </div>
+      ))}
     </EventList>
   </Container>
 );
