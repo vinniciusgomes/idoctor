@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://idoctor.vercel.app"><img src="./github/logo.png" alt="logo" width="200"></a>
+  <a href="https://idoctor.vercel.app"><img src=".github/logo.png" alt="logo" width="200"></a>
   <br>
   iDoctor
   <br>
@@ -30,7 +30,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](./github/home.png)
+![screenshot](.github/home.png)
 
 ## Key Features
 
