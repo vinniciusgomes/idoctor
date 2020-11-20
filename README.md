@@ -1,44 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<h1 align="center">
+  <br>
+  <a href="https://idoctor.vercel.app"><img src="./github/logo.png" alt="logo" width="200"></a>
+  <br>
+  iDoctor
+  <br>
+</h1>
 
-In the project directory, you can run:
+<h4 align="center">Sistema que organiza e agiliza sua clínica, tenha mais praticidade no seu dia a dia com o software para clínicas mais fácil de usar. Queremos o sucesso da sua clínica tanto quanto você!</h4>
 
-### `yarn start`
+<p align="center">
+  <a href="https://badge.fury.io/js/electron-markdownify">
+    <img src="https://badge.fury.io/js/electron-markdownify.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
+  <a href="https://saythanks.io/to/amitmerchant1990">
+      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
+  </a>
+  <a href="https://www.paypal.me/AmitMerchant">
+    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+  </a>
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a>
+</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![screenshot](./github/home.png)
 
-### `yarn test`
+## Key Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* LivePreview - Make changes, See changes
+  - Instantly see what your Markdown documents look like in HTML as you create them.
+* Sync Scrolling
+  - While you type, LivePreview will automatically scroll to the current location you're editing.
+* GitHub Flavored Markdown  
+* Syntax highlighting
+* [KaTeX](https://khan.github.io/KaTeX/) Support
+* Dark/Light mode
+* Toolbar for basic Markdown formatting
+* Supports multiple cursors
+* Save the Markdown preview as PDF
+* Emoji support in preview :tada:
+* App will keep alive in tray for quick usage
+* Full screen mode
+  - Write distraction free.
+* Cross platform
+  - Windows, macOS and Linux ready.
 
-### `yarn build`
+## How To Use
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```bash
+# Clone this repository
+$ git clone https://github.com/vinniciusgomes/idoctor
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Go into the repository
+$ cd idoctor
 
-### `yarn eject`
+# Install dependencies
+$ npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Run the app
+$ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Credits
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This software uses the following open source packages:
 
-## Learn More
+- [Electron](http://electron.atom.io/)
+- [Node.js](https://nodejs.org/)
+- [Marked - a markdown parser](https://github.com/chjj/marked)
+- [showdown](http://showdownjs.github.io/showdown/)
+- [CodeMirror](http://codemirror.net/)
+- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
+- [highlight.js](https://highlightjs.org/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Team
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[![Vinnicius Gomes](https://avatars1.githubusercontent.com/u/28509313?v=3&s=144)](https://github.com/vinniciusgomes)  | [![Quandl.com](https://avatars1.githubusercontent.com/u/15986485?v=3&s=144)](https://github.com/felipens/)
+---|---
+[Vinnicius Gomes ](https://github.com/vinniciusgomes) |[Felipe Novais](https://github.com/felipens)
+
+
+## License
+
+MIT
+
