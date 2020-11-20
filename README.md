@@ -1,9 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://idoctor.vercel.app"><img src=".github/logo.png" alt="logo" width="200"></a>
-  <br>
-  iDoctor
+  <a href="https://idoctor.vercel.app"><img src=".github/logo.svg" alt="logo" width="200"></a>
   <br>
 </h1>
 
