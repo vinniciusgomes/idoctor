@@ -8,10 +8,9 @@
 <h4 align="center">System that organizes and streamlines your clinic, has more practicality in your day to day with the software for clinics easier to use. We want your clinic to succeed as much as you do!</h4>
 
 <p align="center">
-  <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
+  <a href="#technologies">Technologies</a> •
+  <a href="#team">Team</a> 
 </p>
 
 ![screenshot](.github/home.png)
@@ -34,7 +33,7 @@ $ npm install
 $ npm start
 ```
 
-## Technology
+## Technologies 
 
 This software uses these packages:
 
