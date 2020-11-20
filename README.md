@@ -5,6 +5,8 @@
   <br>
 </h1>
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
+
 <h4 align="center">System that organizes and streamlines your clinic, has more practicality in your day to day with the software for clinics easier to use. We want your clinic to succeed as much as you do!</h4>
 
 <p align="center">
