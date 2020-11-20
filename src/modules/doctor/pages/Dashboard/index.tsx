@@ -3,7 +3,7 @@ import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Skeleton } from 'antd';
+import { Empty, Skeleton } from 'antd';
 
 import welcomeImage from '@shared/assets/images/dr-woman.svg';
 import Navbar from '@shared/components/Navbar';
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
               <AppointmentsListContainer>
                 <AppointmentsTitleContainer>
                   <h1>Consultas</h1>
-                  <Link to="/pacientes">
+                  <Link to="/agenda">
                     <span>Ver todos</span>
                     <FiArrowRight color="#3F5368" />
                   </Link>
@@ -113,6 +113,7 @@ const Home: React.FC = () => {
                   </header>
 
                   <main>
+                    {appointments.length === 0 && <Empty description="" />}
                     {appointments.map((appointment, index) => {
                       if (index <= 2) {
                         return (
@@ -133,9 +134,6 @@ const Home: React.FC = () => {
                 </ListContainer>
               </AppointmentsListContainer>
             </ContentWrapper>
-            <CalendarWrapper>
-              <Calendar appointments={appointments} />
-            </CalendarWrapper>
           </Wrapper>
         </Container>
       )}

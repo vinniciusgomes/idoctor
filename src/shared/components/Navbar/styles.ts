@@ -16,6 +16,14 @@ export const NavbarContainer = styled.div`
   width: 270px;
   border-radius: 0px 20px 20px 0px;
   background: #ffffff;
+
+  @media (max-width: 1160px) {
+    width: 220px;
+  }
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -51,18 +59,19 @@ export const PageItem = styled.li<StylesProps>`
     }
 
     img {
-      width: 25px;
+      width: 22px;
     }
 
     span {
       display: block;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 500;
       color: #3f5368;
       margin-left: 20px;
 
-      ${(props) => props.selected
-        && css`
+      ${props =>
+        props.selected &&
+        css`
           color: #7081fa;
         `}
     }
@@ -88,24 +97,36 @@ export const LogoutContainer = styled.div`
     align-items: center;
 
     img {
-      width: 25px;
+      width: 20px;
       margin-right: 20px;
     }
 
     span {
       display: block;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 500;
       color: #fa7070;
     }
+  }
+
+  @media (max-width: 1160px) {
+    width: 220px;
   }
 `;
 
 export const Content = styled.div`
   width: calc(100vw - 270px);
   height: 100vh;
-  background: ${(props) => props.theme.colors.background};
+  background: ${props => props.theme.colors.background};
   padding: 20px 40px;
 
   overflow-y: scroll !important;
+
+  @media (max-width: 1160px) {
+    width: calc(100vw - 220px);
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;

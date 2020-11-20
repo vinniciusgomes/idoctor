@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import { Empty, Pagination, Skeleton } from 'antd';
 
 import Navbar from '@shared/components/Navbar';
 import PatientItem from '@doctor/components/Patients/PatientItem';
 
-import { Container, ListContainer } from './styles';
 import api from '@shared/services/api';
+import Loading from '@shared/components/Loading';
+
 import { IPaginationProperties, IPatient } from './interfaces';
-import { Empty, Pagination, Skeleton } from 'antd';
+import { Container, ListContainer } from './styles';
 
 const Patients: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [patients, setPatients] = useState<IPatient[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [paginationProperties, setPaginationProperties] = useState<
@@ -64,7 +65,12 @@ const Patients: React.FC = () => {
   return (
     <Navbar pageSelected="patients">
       {loading ? (
-        <Skeleton loading={loading} active avatar />
+        <>
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Loading />
+        </>
       ) : (
         <Container>
           <h1>Pacientes</h1>

@@ -42,6 +42,7 @@ export const CalendarWrapper = styled.div`
 
 export const WelcomeCard = styled.div`
   width: 100%;
+  max-width: 850px;
   max-height: 235px;
 
   border-radius: 10px;
