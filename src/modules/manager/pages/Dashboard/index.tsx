@@ -3,7 +3,7 @@ import { FiArrowRight, FiCode } from 'react-icons/fi';
 
 import Navbar from '@shared/components/Navbar';
 
-import welcomeImage from '@shared/assets/images/dr-woman.svg';
+import welcomeImage from '@doctor/assets/images/dr-woman.svg';
 import PatientsList from '@manager/components/Patients/PatientsList';
 
 import {

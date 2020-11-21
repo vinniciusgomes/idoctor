@@ -1,6 +1,6 @@
 import { IPatient } from '@/modules/doctor/pages/Patients/interfaces';
 import React from 'react';
-import { FiMoreVertical } from 'react-icons/fi';
+import { FiMoreVertical, FiTrash, FiPenTool } from 'react-icons/fi';
 
 import avatarIcon from '@shared/assets/images/avatar.png';
 import { Container, Item } from './styles';
@@ -13,7 +13,10 @@ const PatientsList: React.FC<IPatient> = props => (
         <span>{props.name}</span>
       </div>
 
-      <FiMoreVertical color="#D6DADF" size={20} />
+      <div>
+        <FiTrash color="#FA7070" size={20} />
+        <FiPenTool color="#D6DADF" size={20} />
+      </div>
     </Item>
   </Container>
 );

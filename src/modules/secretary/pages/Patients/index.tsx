@@ -1,60 +1,118 @@
-import React from 'react';
-import { FiChevronLeft, FiChevronRight, FiCode } from 'react-icons/fi';
+import React, { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { Empty, Pagination, Skeleton } from 'antd';
 
 import Navbar from '@shared/components/Navbar';
-import PatientsList from '@secretary/components/Patients/PatientsList';
+import PatientItem from '@doctor/components/Patients/PatientItem';
 
+import api from '@shared/services/api';
+import Loading from '@shared/components/Loading';
+
+import { IPaginationProperties, IPatient } from './interfaces';
 import { Container, ListContainer } from './styles';
 
-const Patients: React.FC = () => (
-  <Navbar pageSelected="patients">
-    <Container>
-      <h1>Pacientes</h1>
-      <ListContainer>
-        <header>
-          <div>
-            <span>Nome</span>
-          </div>
-          <div>
-            <span>Ultima consulta</span>
-            <FiCode color="#7081FA" />
-          </div>
-          <div>
-            <span>Próxima consulta</span>
-            <FiCode color="#7081FA" />
-          </div>
-        </header>
+const Patients: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+  const [patients, setPatients] = useState<IPatient[]>([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [paginationProperties, setPaginationProperties] = useState<
+    IPaginationProperties
+  >();
 
-        <main>
-          <PatientsList />
-        </main>
+  const getAppointments = useCallback(async () => {
+    try {
+      const response = await api.get(`patients?page=${pageNumber}`);
 
-        <footer>
-          <span>
-            Mostrando
-            {' '}
-            <b>10</b>
-            {' '}
-            de
-            {' '}
-            <b>350</b>
-            {' '}
-            pacientes
-          </span>
+      setPatients(response.data);
+    } catch (err) {
+      setLoading(false);
 
-          <div>
-            <FiChevronLeft size={22} color="#D8DCE0" />
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <FiChevronRight size={22} color="#D8DCE0" />
-          </div>
-        </footer>
-      </ListContainer>
-    </Container>
-  </Navbar>
-);
+      if (err.response) {
+        return toast.error(err.response.data.message);
+      }
+
+      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+    }
+  }, [pageNumber]);
+
+  const getPaginationProperties = useCallback(async () => {
+    try {
+      const response = await api.get(`patients/pagination`);
+
+      setPaginationProperties(response.data);
+
+      if (response.data) {
+        setLoading(false);
+      }
+    } catch (err) {
+      setLoading(false);
+      if (err.response) {
+        return toast.error(err.response.data.message);
+      }
+
+      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+    }
+  }, [paginationProperties]);
+
+  useEffect(() => {
+    getPaginationProperties();
+  }, [pageNumber]);
+
+  useEffect(() => {
+    getAppointments();
+  }, [getAppointments, pageNumber]);
+
+  return (
+    <Navbar pageSelected="patients">
+      {loading ? (
+        <>
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Loading />
+        </>
+      ) : (
+        <Container>
+          <h1>Pacientes</h1>
+          <ListContainer>
+            <header>
+              <div>
+                <span>Nome</span>
+              </div>
+            </header>
+
+            <main>
+              {patients.map(patient => (
+                <PatientItem
+                  key={patient.id}
+                  avatar={patient.avatar}
+                  name={patient.name}
+                  id={patient.id}
+                />
+              ))}
+
+              {patients.length === 0 && <Empty description="" />}
+            </main>
+
+            {paginationProperties && (
+              <footer>
+                <span>
+                  Mostrando <b>{patients.length}</b> de{' '}
+                  <b>{paginationProperties.numberOfPatients}</b> pacientes
+                </span>
+
+                <Pagination
+                  defaultCurrent={1}
+                  total={paginationProperties.numberOfPages}
+                  onChange={page => setPageNumber(page)}
+                />
+              </footer>
+            )}
+          </ListContainer>
+        </Container>
+      )}
+    </Navbar>
+  );
+};
 
 export default Patients;

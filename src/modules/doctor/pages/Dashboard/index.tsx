@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Empty, Skeleton } from 'antd';
 
-import welcomeImage from '@shared/assets/images/dr-woman.svg';
+import welcomeImage from '@doctor/assets/images/dr-woman.svg';
 import Navbar from '@shared/components/Navbar';
 import { useAuth } from '@shared/hooks/auth';
 import Loading from '@shared/components/Loading';
 import api from '@shared/services/api';
-import Calendar from '@doctor/components/Home/Calendar';
 import AppointmentsItem from '@doctor/components/Home/Appointments';
 
 import { IAppointments } from './interfaces';
@@ -18,7 +17,6 @@ import { IAppointments } from './interfaces';
 import {
   AppointmentsListContainer,
   AppointmentsTitleContainer,
-  CalendarWrapper,
   Container,
   ContentWrapper,
   PageTitleContainer,

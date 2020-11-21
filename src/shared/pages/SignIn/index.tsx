@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import vifeLogo from '../../../assets/images/vife-logo.svg';
-import idoctorLogo from '../../../assets/images/idoctor-logo.svg';
+import { useAuth } from '@shared/hooks/auth';
+
+import vifeLogo from '@shared/assets/images/vife-logo.svg';
+import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
 
 import { Container, Background, Content } from './styles';
-import { useAuth } from '../../../hooks/auth';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -98,7 +99,7 @@ const Home: React.FC = () => {
               Acessar
             </button>
           </form>
-          <a href="http://localhost:3000">Esqueci minha senha</a>
+          <Link to="/recuperar-senha">Esqueci minha senha</Link>
         </main>
         <footer>
           <span>CREATED BY</span>

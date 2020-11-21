@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Empty, Skeleton } from 'antd';
 
+import welcomeImage from '@secretary/assets/images/secretary.svg';
 import Navbar from '@shared/components/Navbar';
+import { useAuth } from '@shared/hooks/auth';
+import Loading from '@shared/components/Loading';
+import api from '@shared/services/api';
+import AppointmentsItem from '@secretary/components/Home/Appointments';
 
-import welcomeImage from '@shared/assets/images/dr-woman.svg';
-import PatientsList from '@secretary/components/Patients/PatientsList';
+import { IAppointments } from './interfaces';
 
 import {
   AppointmentsListContainer,
   AppointmentsTitleContainer,
-  CalendarWrapper,
   Container,
   ContentWrapper,
   PageTitleContainer,
@@ -18,67 +25,117 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
-import Calendar from '@secretary/components/Home/Calendar';
-import { useAuth } from '@shared/hooks/auth';
 
 const Home: React.FC = () => {
-  const { user } = useAuth();
+  const { user, doctor } = useAuth();
+
+  const [loading, setLoading] = useState(true);
+  const [appointments, setAppointments] = useState<IAppointments[]>([]);
+
+  const getAppointments = useCallback(async () => {
+    try {
+      const response = await api.get(
+        `appointments/?date=${format(
+          new Date(),
+          'yyyy/MM/dd',
+        )}&limit=4`,
+      );
+
+      setAppointments(response.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      if (err.response) {
+        return toast.error(err.response.data.message);
+      }
+
+      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+    }
+  }, [doctor]);
+
+  useEffect(() => {
+    getAppointments();
+  }, [getAppointments]);
 
   return (
     <Navbar pageSelected="dashboard">
-      <Container>
-        <PageTitleContainer>
-          <h1>Dashboard</h1>
-        </PageTitleContainer>
+      {loading ? (
+        <>
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Skeleton loading={loading} active />
+          <Loading />
+        </>
+      ) : (
+        <Container>
+          <PageTitleContainer>
+            <h1>Dashboard</h1>
+          </PageTitleContainer>
 
-        <Wrapper>
-          <ContentWrapper>
-            <WelcomeCard>
-              <WelcomeImage src={welcomeImage} />
-              <div>
-                <span>Bom dia,</span>
-                <b>{user.name}</b>
-              </div>
-              <span>
-                Seja bem vindo ao iDoctor, você tem um total de <b>8</b>{' '}
-                consultas hoje!
-              </span>
-            </WelcomeCard>
-            <AppointmentsListContainer>
-              <AppointmentsTitleContainer>
-                <h1>Consultas</h1>
+          <Wrapper>
+            <ContentWrapper>
+              <WelcomeCard>
+                <WelcomeImage src={welcomeImage} />
                 <div>
-                  <span>Ver todos</span>
-                  <FiArrowRight color="#3F5368" />
+                  <span>Bom dia,</span>
+                  <b>{user.name}</b>
                 </div>
-              </AppointmentsTitleContainer>
+                <span>
+                  Seja bem vindo ao iDoctor, você tem um total de{' '}
+                  <b>{appointments.length}</b> consultas hoje!
+                </span>
+              </WelcomeCard>
+              <AppointmentsListContainer>
+                <AppointmentsTitleContainer>
+                  <h1>Consultas</h1>
+                  <Link to="/agenda">
+                    <span>Ver todos</span>
+                    <FiArrowRight color="#3F5368" />
+                  </Link>
+                </AppointmentsTitleContainer>
 
-              <ListContainer>
-                <header>
-                  <div>
-                    <span>Nome</span>
-                  </div>
-                  <div>
-                    <span>Ultima consulta</span>
-                    <FiCode color="#7081FA" />
-                  </div>
-                  <div>
-                    <span>Próxima consulta</span>
-                    <FiCode color="#7081FA" />
-                  </div>
-                </header>
+                <ListContainer>
+                  <header>
+                    <div>
+                      <span>Nome</span>
+                    </div>
+                    <div>
+                      <span>Telefone</span>
+                    </div>
+                    <div>
+                      <span>Próxima consulta</span>
+                    </div>
+                    <div>
+                      <span>Médico</span>
+                    </div>
+                  </header>
 
-                <main>
-                  <PatientsList max={3} />
-                </main>
-              </ListContainer>
-            </AppointmentsListContainer>
-          </ContentWrapper>
-          <CalendarWrapper>
-            <Calendar />
-          </CalendarWrapper>
-        </Wrapper>
-      </Container>
+                  <main>
+                    {appointments.length === 0 && <Empty description="" />}
+                    {appointments.map((appointment, index) => {
+                      if (index <= 2) {
+                        return (
+                          <AppointmentsItem
+                            key={appointment.id}
+                            id={appointment.id}
+                            date={appointment.date}
+                            doctor={appointment.doctor}
+                            patient={appointment.patient}
+                            start_time={appointment.start_time}
+                            status={appointment.status}
+                            type={appointment.type}
+                          />
+                        );
+                      }
+                    })}
+                  </main>
+                </ListContainer>
+              </AppointmentsListContainer>
+            </ContentWrapper>
+          </Wrapper>
+        </Container>
+      )}
     </Navbar>
   );
 };

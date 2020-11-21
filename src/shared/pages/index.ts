@@ -1,3 +1,4 @@
-import SignIn from './Auth/SignIn';
+import SignIn from './SignIn';
+import ForgotPassword from './ForgotPassword';
 
-export { SignIn };
+export { SignIn, ForgotPassword };

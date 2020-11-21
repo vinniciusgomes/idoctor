@@ -3,6 +3,7 @@ import { Switch, BrowserRouter } from 'react-router-dom';
 
 import Route from './Route';
 
+import PublicRoutes from '@shared/routes/PublicRoutes';
 import DoctorRoutes from '@doctor/routes';
 import ManagerRoutes from '@manager/routes';
 import SecretaryRoutes from '@secretary/routes';
@@ -16,7 +17,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {!user && <Route path="/" component={SignIn} />}
+        {!user && <PublicRoutes />}
         {user && user.type === 1 && <ManagerRoutes />}
         {user && user.type === 2 && <DoctorRoutes />}
         {user && user.type === 3 && <SecretaryRoutes />}

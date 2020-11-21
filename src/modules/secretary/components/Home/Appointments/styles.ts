@@ -22,6 +22,8 @@ export const Item = styled.li`
   }
 
   div {
+    width: calc(100% / 4);
+
     display: flex;
     align-items: center;
 

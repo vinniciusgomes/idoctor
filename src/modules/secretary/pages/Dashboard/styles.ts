@@ -20,7 +20,7 @@ export const PageTitleContainer = styled.div`
 
   h1 {
     font-size: 30px;
-    color: ${(props) => props.theme.colors.black};
+    color: ${props => props.theme.colors.black};
   }
 `;
 
@@ -42,6 +42,7 @@ export const CalendarWrapper = styled.div`
 
 export const WelcomeCard = styled.div`
   width: 100%;
+  max-width: 850px;
   max-height: 235px;
 
   border-radius: 10px;
@@ -97,9 +98,11 @@ export const AppointmentsTitleContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  div {
+  a {
     display: flex;
     align-items: center;
+
+    text-decoration: none;
 
     cursor: pointer;
 
