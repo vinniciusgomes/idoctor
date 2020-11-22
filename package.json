@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^7.1.2",
@@ -24,7 +25,6 @@
     "react-lottie": "^1.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-toastify": "^6.1.0",
     "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },

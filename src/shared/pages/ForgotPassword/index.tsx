@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import vifeLogo from '@shared/assets/images/vife-logo.svg';
@@ -8,6 +7,7 @@ import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
 
 import { Container, Background, Content } from './styles';
 import { useAuth } from '@shared/hooks/auth';
+import { message } from 'antd';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -27,10 +27,10 @@ const Home: React.FC = () => {
         });
       } catch (err) {
         if (err.response.data) {
-          return toast.error(err.response.data.message);
+          return message.error(err.response.data.message);
         }
 
-        return toast.error(
+        return message.error(
           'Ocorreu um erro interno. Tente novamente mais tarde',
         );
       }

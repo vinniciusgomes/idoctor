@@ -9,8 +9,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.black};
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.black};
     -webkit-font-smoothing: antialiased;
   }
 
@@ -39,5 +39,13 @@ export default createGlobalStyle`
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #1d1d1d;
+  }
+
+  .ant-modal-content {
+    border-radius: 10px !important;
+  }
+
+  .ant-modal-close-x {
+    color: #FA7070
   }
 `;

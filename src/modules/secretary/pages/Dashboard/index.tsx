@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Empty, Skeleton } from 'antd';
+import { Empty, message, Skeleton } from 'antd';
 
 import welcomeImage from '@secretary/assets/images/secretary.svg';
 import Navbar from '@shared/components/Navbar';
@@ -47,10 +46,10 @@ const Home: React.FC = () => {
       setLoading(false);
 
       if (err.response) {
-        return toast.error(err.response.data.message);
+        return message.error(err.response.data.message);
       }
 
-      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
     }
   }, [doctor]);
 

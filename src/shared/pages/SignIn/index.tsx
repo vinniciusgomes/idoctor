@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { useAuth } from '@shared/hooks/auth';
 
 import vifeLogo from '@shared/assets/images/vife-logo.svg';
 import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
 
-import { Container, Background, Content } from './styles';
+import { Container, Background, Content, TextField } from './styles';
+import { message, Spin } from 'antd';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -15,27 +15,38 @@ const Home: React.FC = () => {
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [hasError, setHasError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSignIn = useCallback(
     async e => {
       e.preventDefault();
+      setLoading(true);
 
-      try {
-        await signIn({
-          login,
-          password,
-        });
-      } catch (err) {
-        if (err.response.data) {
-          return toast.error(err.response.data.message);
+      if (login && password !== '') {
+        try {
+          await signIn({
+            login,
+            password,
+          });
+        } catch (err) {
+          setHasError(true);
+          setLoading(false);
+          if (err.response.data) {
+            return message.error(err.response.data.message);
+          }
+
+          return message.error(
+            'Ocorreu um erro interno na aplicação. Tente novamente mais tarde!',
+          );
         }
 
-        return toast.error(
-          'Ocorreu um erro interno. Tente novamente mais tarde',
-        );
+        history.push('/');
+      } else {
+        setHasError(true);
+        setLoading(false);
+        return message.error('Preencha todos os campos para prosseguir!');
       }
-
-      history.push('/');
     },
     [login, password, signIn, history],
   );
@@ -77,26 +88,34 @@ const Home: React.FC = () => {
           <form>
             <div>
               <span>E-mail</span>
-              <input
+              <TextField
                 type="text"
                 placeholder="seuemail@exemplo.com"
                 name="email"
                 id="email"
-                onChange={e => setLogin(e.target.value)}
+                hasError={hasError}
+                onChange={e => {
+                  setLogin(e.target.value);
+                  setHasError(false);
+                }}
               />
             </div>
             <div>
               <span>Senha</span>
-              <input
+              <TextField
                 type="password"
                 placeholder="**********"
                 name="password"
                 id="password"
-                onChange={e => setPassword(e.target.value)}
+                hasError={hasError}
+                onChange={e => {
+                  setPassword(e.target.value);
+                  setHasError(false);
+                }}
               />
             </div>
-            <button type="submit" onClick={handleSignIn}>
-              Acessar
+            <button type="submit" onClick={handleSignIn} disabled={loading}>
+              {loading ? <Spin style={{ marginTop: 10 }} /> : 'Acessar'}
             </button>
           </form>
           <Link to="/recuperar-senha">Esqueci minha senha</Link>

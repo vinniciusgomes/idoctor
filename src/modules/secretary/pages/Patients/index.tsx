@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import { Empty, Pagination, Skeleton } from 'antd';
+import { Empty, message, Pagination, Skeleton } from 'antd';
 
 import Navbar from '@shared/components/Navbar';
 import PatientItem from '@doctor/components/Patients/PatientItem';
@@ -28,10 +27,10 @@ const Patients: React.FC = () => {
       setLoading(false);
 
       if (err.response) {
-        return toast.error(err.response.data.message);
+        return message.error(err.response.data.message);
       }
 
-      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
     }
   }, [pageNumber]);
 
@@ -47,10 +46,10 @@ const Patients: React.FC = () => {
     } catch (err) {
       setLoading(false);
       if (err.response) {
-        return toast.error(err.response.data.message);
+        return message.error(err.response.data.message);
       }
 
-      return toast.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
     }
   }, [paginationProperties]);
 

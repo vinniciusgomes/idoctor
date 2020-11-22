@@ -1,12 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import signInBackgroundImg from '@shared/assets/images/sign-in-background.png';
+
+interface ITextFieldProps {
+  hasError: boolean;
+}
 
 export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+
+  .ant-spin-dot-item {
+    background-color: #fff;
+  }
 `;
 
 export const Content = styled.div`
@@ -110,41 +118,6 @@ export const Content = styled.div`
 
           @media (max-width: 520px) {
             font-size: 15px;
-          }
-        }
-
-        input {
-          width: 600px;
-          height: 65px;
-
-          box-shadow: 0px 0px 20px #eceff929;
-          border: 1px solid #b5bcc7;
-          border-radius: 10px;
-          background: #f4f5fa;
-
-          padding: 0 20px;
-          font-size: 20px;
-          font-weight: 600;
-
-          transition: border-color 0.2s;
-
-          &::placeholder {
-            color: #b5bcc7;
-            font-weight: 400;
-          }
-
-          &:hover {
-            border-color: #7081fa;
-          }
-
-          @media (max-width: 640px) {
-            width: 100%;
-          }
-
-          @media (max-width: 520px) {
-            height: 55px;
-            font-size: 16px;
-            padding: 0 16px;
           }
         }
 
@@ -287,5 +260,46 @@ export const Background = styled.div`
 
   @media (max-width: 1366px) {
     display: none;
+  }
+`;
+
+export const TextField = styled.input<ITextFieldProps>`
+  width: 600px;
+  height: 65px;
+
+  box-shadow: 0px 0px 20px #eceff929;
+  border: 1px solid #b5bcc7;
+  border-radius: 10px;
+  background: #f4f5fa;
+
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+
+  transition: border-color 0.2s;
+
+  ${props =>
+    props.hasError &&
+    css`
+      border: 1px solid #fa7070;
+    `}
+
+  &::placeholder {
+    color: #b5bcc7;
+    font-weight: 400;
+  }
+
+  &:hover {
+    border-color: #7081fa;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+
+  @media (max-width: 520px) {
+    height: 55px;
+    font-size: 16px;
+    padding: 0 16px;
   }
 `;
