@@ -3,7 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import { ConfigProvider } from 'antd';
 import ptBR from 'antd/es/locale/pt_BR';
 import 'antd/dist/antd.css';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Routes from '@shared/routes';
 import GlobalStyle from '@shared/styles/global';
