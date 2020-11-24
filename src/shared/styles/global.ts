@@ -48,4 +48,8 @@ export default createGlobalStyle`
   .ant-modal-close-x {
     color: #FA7070
   }
+
+  .ant-modal-body {
+    padding: 0
+  }
 `;

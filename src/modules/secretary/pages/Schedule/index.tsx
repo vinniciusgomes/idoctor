@@ -1,29 +1,25 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Calendar, Badge, Skeleton, Dropdown, Modal } from 'antd';
-import { DownOutlined, PlusOutlined } from '@ant-design/icons';
+import { Calendar, Badge, Modal, message } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import { format } from 'date-fns';
 
 import Navbar from '@shared/components/Navbar';
 
 import api from '@shared/services/api';
-import Loading from '@shared/components/Loading';
-import DropdownMenu from '@secretary/components/Schedule/DropdownMenu';
+import DoctorDropdown from '@secretary/components/Schedule/DoctorDropdown';
 import CreateAppointmentModal from '@secretary/components/Schedule/CreateAppointmentModal';
 
 import { IAppointment, IEvent } from './interfaces';
-import {
-  Container,
-  Header,
-  SelectDoctorButton,
-  NewAppointmentButton,
-} from './styles';
+import { Container, Header, NewAppointmentButton } from './styles';
 
 const Schedule: React.FC = () => {
   const [appointments, setAppointments] = useState<IAppointment[]>([]);
   const [year, setYear] = useState(format(new Date(), 'yyyy'));
   const [month, setMonth] = useState(format(new Date(), 'MM'));
-  const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(true);
+  const [doctorId, setDoctorId] = useState('');
+  const [doctorName, setDoctorName] = useState('');
+
+  const [visible, setVisible] = useState(false);
 
   const dateCellRender = useCallback(
     (value: any) => {
@@ -47,8 +43,8 @@ const Schedule: React.FC = () => {
 
       return (
         <ul className="events">
-          {listData.map(item => (
-            <li key={item.content}>
+          {listData.map((item, index) => (
+            <li key={index}>
               <Badge status={item.type} text={item.content} />
             </li>
           ))}
@@ -71,64 +67,59 @@ const Schedule: React.FC = () => {
   const getAppointments = useCallback(async () => {
     try {
       const response = await api.get(
-        `appointments/month?month=${month}&year=${year}&limit=5000`,
+        `appointments/month/doctor/${doctorId}?month=${month}&year=${year}&limit=5000`,
       );
 
       setAppointments(response.data);
-      setLoading(false);
     } catch (err) {
-      setLoading(false);
+      if (err.response) {
+        return message.error(err.response.data.message);
+      }
+
+      return message.error(
+        'Ocorreu um erro interno na aplicação. Tente novamente mais tarde!',
+      );
     }
-  }, [month, year]);
+  }, [month, year, doctorId]);
 
   useEffect(() => {
-    getAppointments();
-  }, [month, year]);
+    if (doctorId) {
+      getAppointments();
+    }
+  }, [month, year, doctorId]);
 
   return (
     <Navbar pageSelected="schedule">
-      {loading ? (
-        <>
-          <Skeleton loading={loading} active />
-          <Skeleton loading={loading} active />
-          <Skeleton loading={loading} active />
-          <Loading />
-        </>
-      ) : (
-        <Container>
-          <Header>
-            <h1>Agenda</h1>
-            <div>
-              <NewAppointmentButton onClick={() => setVisible(true)}>
-                <span>Nova consulta</span>
-                <PlusOutlined />
-              </NewAppointmentButton>
+      <Container>
+        <Header>
+          <h1>Agenda</h1>
+          <div>
+            <NewAppointmentButton onClick={() => setVisible(true)}>
+              <span>Nova consulta</span>
+              <PlusOutlined />
+            </NewAppointmentButton>
+            <DoctorDropdown
+              setDoctorId={setDoctorId}
+              setDoctorName={setDoctorName}
+            />
+          </div>
+        </Header>
+        <Calendar
+          dateCellRender={dateCellRender}
+          onChange={handleDateChange}
+          style={{ padding: 20, borderRadius: 10 }}
+        />
 
-              <Dropdown overlay={DropdownMenu} placement="bottomCenter" arrow>
-                <SelectDoctorButton>
-                  <span>Dr Vinnicius</span>
-                  <DownOutlined />
-                </SelectDoctorButton>
-              </Dropdown>
-            </div>
-          </Header>
-          <Calendar
-            dateCellRender={dateCellRender}
-            onChange={handleDateChange}
-            style={{ padding: 20, borderRadius: 10 }}
-          />
-
-          <Modal
-            centered
-            visible={visible}
-            onCancel={() => setVisible(false)}
-            width={1000}
-            footer={false}
-          >
-            <CreateAppointmentModal />
-          </Modal>
-        </Container>
-      )}
+        <Modal
+          centered
+          visible={visible}
+          onCancel={() => setVisible(false)}
+          width={1000}
+          footer={false}
+        >
+          <CreateAppointmentModal doctorId={doctorId} doctorName={doctorName} />
+        </Modal>
+      </Container>
     </Navbar>
   );
 };

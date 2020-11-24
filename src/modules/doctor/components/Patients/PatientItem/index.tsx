@@ -1,4 +1,4 @@
-import { IPatient } from '@/modules/doctor/pages/Patients/interfaces';
+import { IPatient } from '@doctor/pages/Patients/interfaces';
 import React from 'react';
 import { FiMoreVertical, FiTrash, FiPenTool } from 'react-icons/fi';
 

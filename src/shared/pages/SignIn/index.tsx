@@ -5,6 +5,7 @@ import { useAuth } from '@shared/hooks/auth';
 
 import vifeLogo from '@shared/assets/images/vife-logo.svg';
 import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
+import Button from '@shared/components/Button';
 
 import { Container, Background, Content, TextField } from './styles';
 import { message, Spin } from 'antd';
@@ -32,7 +33,7 @@ const Home: React.FC = () => {
         } catch (err) {
           setHasError(true);
           setLoading(false);
-          if (err.response.data) {
+          if (err.response) {
             return message.error(err.response.data.message);
           }
 
@@ -114,9 +115,9 @@ const Home: React.FC = () => {
                 }}
               />
             </div>
-            <button type="submit" onClick={handleSignIn} disabled={loading}>
+            <Button type="submit" onClick={handleSignIn} disabled={loading}>
               {loading ? <Spin style={{ marginTop: 10 }} /> : 'Acessar'}
-            </button>
+            </Button>
           </form>
           <Link to="/recuperar-senha">Esqueci minha senha</Link>
         </main>

@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import api from '../services/api';
 
 interface IDoctor {
@@ -44,6 +45,8 @@ interface IAuthContextData {
 const AuthContext = createContext<IAuthContextData>({} as IAuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+  const history = useHistory();
+
   const [data, setData] = useState<IAuthState>(() => {
     const token = localStorage.getItem('@iDoctor:token');
     const user = localStorage.getItem('@iDoctor:user');
@@ -88,6 +91,8 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.removeItem('@iDoctor:doctor');
 
     setData({} as IAuthState);
+
+    window.location.href = '/';
   }, []);
 
   return (

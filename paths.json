@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"],
       "@shared/*": ["shared/*"],
       "@doctor/*": ["modules/doctor/*"],
       "@manager/*": ["modules/manager/*"],

@@ -265,7 +265,7 @@ export const Background = styled.div`
 
 export const TextField = styled.input<ITextFieldProps>`
   width: 600px;
-  height: 65px;
+  height: 60px;
 
   box-shadow: 0px 0px 20px #eceff929;
   border: 1px solid #b5bcc7;
@@ -273,7 +273,7 @@ export const TextField = styled.input<ITextFieldProps>`
   background: #f4f5fa;
 
   padding: 0 20px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 
   transition: border-color 0.2s;

@@ -1,6 +1,7 @@
-import { IAppointments } from '@/modules/doctor/pages/Dashboard/interfaces';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+
+import { IAppointments } from '@doctor/pages/Dashboard/interfaces';
 
 import {
   Container,
