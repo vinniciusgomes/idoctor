@@ -27,4 +27,8 @@ export const Container = styled.button`
     font-size: 17px;
     font-weight: 500;
   }
+
+  .ant-spin-dot-item {
+    background-color: #ffffff;
+  }
 `;

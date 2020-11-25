@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { message, Spin } from 'antd';
 
 import { useAuth } from '@shared/hooks/auth';
 
@@ -7,8 +8,18 @@ import vifeLogo from '@shared/assets/images/vife-logo.svg';
 import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
 import Button from '@shared/components/Button';
 
-import { Container, Background, Content, TextField } from './styles';
-import { message, Spin } from 'antd';
+import {
+  Container,
+  Background,
+  Content,
+  TextField,
+  FormContent,
+  SignInForm,
+  ContentFooter,
+  ContentHeader,
+  BackgroundContent,
+  BackgroundFooter,
+} from './styles';
 
 const Home: React.FC = () => {
   const history = useHistory();
@@ -55,7 +66,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Background>
-        <main>
+        <BackgroundContent>
           <img src={idoctorLogo} alt="iDoctor" />
           <h1>Bem vindo</h1>
           <span>
@@ -64,8 +75,8 @@ const Home: React.FC = () => {
             Queremos o sucesso da sua clínica tanto quanto você!
           </span>
           <strong>O Software Médico preparado para a LGPD</strong>
-        </main>
-        <footer>
+        </BackgroundContent>
+        <BackgroundFooter>
           <span>© VIFE 2020 </span>
           <ul>
             <li>
@@ -78,15 +89,12 @@ const Home: React.FC = () => {
               <a href="http://localhost:3000">Contato</a>
             </li>
           </ul>
-        </footer>
+        </BackgroundFooter>
       </Background>
       <Content>
-        <header>
-          <a href="http://localhost:3000">Não possuí conta?</a>
-        </header>
-        <main>
+        <FormContent>
           <h1>Acesse sua conta</h1>
-          <form>
+          <SignInForm>
             <div>
               <span>E-mail</span>
               <TextField
@@ -118,13 +126,13 @@ const Home: React.FC = () => {
             <Button type="submit" onClick={handleSignIn} disabled={loading}>
               {loading ? <Spin style={{ marginTop: 10 }} /> : 'Acessar'}
             </Button>
-          </form>
+          </SignInForm>
           <Link to="/recuperar-senha">Esqueci minha senha</Link>
-        </main>
-        <footer>
+        </FormContent>
+        <ContentFooter>
           <span>CREATED BY</span>
           <img src={vifeLogo} alt="VIFE Logo" />
-        </footer>
+        </ContentFooter>
       </Content>
     </Container>
   );

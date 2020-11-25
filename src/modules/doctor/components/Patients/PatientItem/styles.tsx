@@ -25,8 +25,9 @@ export const Item = styled.li`
     display: flex;
     align-items: center;
 
-    img {
+    > img {
       width: 50px;
+      height: auto;
       border-radius: 100%;
       margin-right: 20px;
     }
@@ -39,4 +40,11 @@ export const Item = styled.li`
   svg {
     cursor: pointer;
   }
+`;
+
+export const ActionIcon = styled.img`
+  height: 20px !important;
+  margin-right: 0px !important;
+
+  cursor: pointer;
 `;

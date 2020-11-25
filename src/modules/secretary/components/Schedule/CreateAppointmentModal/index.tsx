@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { message } from 'antd';
+import { message, Spin } from 'antd';
 import { format } from 'date-fns';
 
 import TextField from '@shared/components/TextField';
@@ -8,21 +8,29 @@ import Button from '@shared/components/Button';
 import { ButtonWrapper, Container, TextFieldWrapper } from './styles';
 import api from '@shared/services/api';
 import { ICreateAppointmentModal, IPatientData } from './interfaces';
+import TextArea from '@shared/components/TextArea';
 
 const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
   doctorId,
   doctorName,
+  close,
 }) => {
   const [hasError, setHasError] = useState(false);
   const [patientDocument, setPatientDocument] = useState('');
-  const [appointmentDate, setAppointmentDate] = useState('');
-  const [appointmentHour, setAppointmentHour] = useState('');
+  const [appointmentDate, setAppointmentDate] = useState(
+    format(new Date(), 'yyyy-MM-dd'),
+  );
+  const [appointmentHour, setAppointmentHour] = useState(
+    format(new Date(), 'HH:mm'),
+  );
   const [appointmentType, setAppointmentType] = useState('');
+  const [appointmentDescription, setAppointmentDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
     async e => {
       e.preventDefault();
+      setLoading(true);
 
       if (
         patientDocument &&
@@ -39,7 +47,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
 
           if (patientData.id) {
             const data = {
-              date: format(new Date(appointmentDate), 'yyyy-mm-dd'),
+              date: appointmentDate,
               start_time: appointmentHour,
               status: 1,
               type: appointmentType,
@@ -50,7 +58,11 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
 
             const response = await api.post('appointments', data);
 
-            console.log(response);
+            if (response.data.id) {
+              message.success('Consulta agendada com sucesso!');
+              handleResetForm();
+              close();
+            }
           } else {
             setHasError(true);
             setLoading(false);
@@ -77,6 +89,16 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
     [patientDocument, appointmentDate, appointmentHour, appointmentType],
   );
 
+  const handleResetForm = useCallback(() => {
+    setHasError(false);
+    setPatientDocument('');
+    setAppointmentDate(format(new Date(), 'yyyy-MM-dd'));
+    setAppointmentHour(format(new Date(), 'HH:mm'));
+    setAppointmentType('');
+    setAppointmentDescription('');
+    setLoading(false);
+  }, []);
+
   return (
     <Container>
       <form onSubmit={handleSubmit}>
@@ -101,6 +123,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
             placeholder="Data da consulta"
             name="appointmentDate"
             id="appointmentDate"
+            value={format(new Date(appointmentDate), 'dd/MM/yyyy')}
             hasError={hasError}
             onChange={e => {
               setAppointmentDate(e.target.value);
@@ -113,6 +136,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
             placeholder="Hora da consulta"
             name="appointmentHour"
             id="appointmentHour"
+            value={appointmentHour}
             hasError={hasError}
             onChange={e => {
               setAppointmentHour(e.target.value);
@@ -142,8 +166,19 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
             hasError={hasError}
           />
         </TextFieldWrapper>
+        <TextFieldWrapper>
+          <TextArea
+            label="Observação"
+            placeholder="Observação"
+            value={appointmentDescription}
+            onChange={e => setAppointmentDescription(e.target.value)}
+            rows={5}
+          />
+        </TextFieldWrapper>
         <ButtonWrapper>
-          <Button>Salvar</Button>
+          <Button>
+            {loading ? <Spin style={{ marginTop: 10 }} /> : 'Salvar'}
+          </Button>
         </ButtonWrapper>
       </form>
     </Container>

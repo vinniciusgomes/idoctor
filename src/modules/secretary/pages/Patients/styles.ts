@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   h1 {
     font-size: 30px;
-    color: ${(props) => props.theme.colors.black};
+    color: ${props => props.theme.colors.black};
   }
 
   p {
@@ -17,10 +17,45 @@ export const Container = styled.div`
   }
 `;
 
+export const Header = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button + button {
+      margin-left: 15px;
+    }
+  }
+`;
+
+export const NewUserButton = styled.button`
+  height: 40px;
+  width: 210px;
+
+  cursor: pointer;
+  background-color: #7081FA;
+  color: #fff;
+  border-radius: 7px;
+  padding: 8px 16px;
+
+  border: 0;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const ListContainer = styled.div`
   width: 100%;
   padding: 20px 40px;
-  margin-top: 40px;
+  margin-top: 11px;
 
   background: #fff;
   box-shadow: 0px 0px 10px #0000000d;

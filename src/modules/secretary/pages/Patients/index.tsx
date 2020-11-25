@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Empty, message, Pagination, Skeleton } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 
 import Navbar from '@shared/components/Navbar';
 import PatientItem from '@doctor/components/Patients/PatientItem';
@@ -7,11 +8,15 @@ import PatientItem from '@doctor/components/Patients/PatientItem';
 import api from '@shared/services/api';
 import Loading from '@shared/components/Loading';
 
+import { Container, ListContainer, Header, NewUserButton } from './styles';
 import { IPaginationProperties, IPatient } from './interfaces';
-import { Container, ListContainer } from './styles';
+import Modal from 'antd/lib/modal/Modal';
+import CreateUserModal from '@secretary/components/Patients/CreateUserModal';
+import TextField from '@shared/components/TextField';
 
 const Patients: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [patients, setPatients] = useState<IPatient[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [paginationProperties, setPaginationProperties] = useState<
@@ -30,7 +35,9 @@ const Patients: React.FC = () => {
         return message.error(err.response.data.message);
       }
 
-      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error(
+        'Ocorreu um erro interno. Tente novamente mais tarde',
+      );
     }
   }, [pageNumber]);
 
@@ -49,7 +56,9 @@ const Patients: React.FC = () => {
         return message.error(err.response.data.message);
       }
 
-      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error(
+        'Ocorreu um erro interno. Tente novamente mais tarde',
+      );
     }
   }, [paginationProperties]);
 
@@ -72,7 +81,17 @@ const Patients: React.FC = () => {
         </>
       ) : (
         <Container>
-          <h1>Pacientes</h1>
+          <Header>
+            <h1>Pacientes</h1>
+            <div>
+              <NewUserButton onClick={() => setVisible(true)}>
+                <span>Adicionar paciente</span>
+                <PlusOutlined />
+              </NewUserButton>
+
+            </div>
+          </Header>
+
           <ListContainer>
             <header>
               <div>
@@ -108,6 +127,15 @@ const Patients: React.FC = () => {
               </footer>
             )}
           </ListContainer>
+          <Modal
+            centered
+            visible={visible}
+            onCancel={() => setVisible(false)}
+            width={1300}
+            footer={false}
+          >
+            <CreateUserModal close={() => setVisible(false)} />
+          </Modal>
         </Container>
       )}
     </Navbar>

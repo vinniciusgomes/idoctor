@@ -117,7 +117,11 @@ const Schedule: React.FC = () => {
           width={1000}
           footer={false}
         >
-          <CreateAppointmentModal doctorId={doctorId} doctorName={doctorName} />
+          <CreateAppointmentModal
+            doctorId={doctorId}
+            doctorName={doctorName}
+            close={() => setVisible(false)}
+          />
         </Modal>
       </Container>
     </Navbar>

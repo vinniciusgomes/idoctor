@@ -1,49 +1,31 @@
-import React, { useCallback, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import vifeLogo from '@shared/assets/images/vife-logo.svg';
 import idoctorLogo from '@shared/assets/images/idoctor-logo.svg';
 
-import { Container, Background, Content } from './styles';
-import { useAuth } from '@shared/hooks/auth';
-import { message } from 'antd';
+import {
+  Container,
+  Background,
+  Content,
+  TextField,
+  FormContent,
+  SignInForm,
+  ContentFooter,
+  ContentHeader,
+  BackgroundContent,
+  BackgroundFooter,
+} from './styles';
+import Button from '@shared/components/Button';
 
 const Home: React.FC = () => {
-  const history = useHistory();
-  const { signIn } = useAuth();
-
   const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSignIn = useCallback(
-    async e => {
-      e.preventDefault();
-
-      try {
-        await signIn({
-          login,
-          password,
-        });
-      } catch (err) {
-        if (err.response.data) {
-          return message.error(err.response.data.message);
-        }
-
-        return message.error(
-          'Ocorreu um erro interno. Tente novamente mais tarde',
-        );
-      }
-
-      history.push('/');
-    },
-    [login, password, signIn, history],
-  );
 
   return (
     <Container>
       <Background>
-        <main>
+        <BackgroundContent>
           <img src={idoctorLogo} alt="iDoctor" />
           <h1>Bem vindo</h1>
           <span>
@@ -52,8 +34,8 @@ const Home: React.FC = () => {
             Queremos o sucesso da sua clínica tanto quanto você!
           </span>
           <strong>O Software Médico preparado para a LGPD</strong>
-        </main>
-        <footer>
+        </BackgroundContent>
+        <BackgroundFooter>
           <span>© VIFE 2020 </span>
           <ul>
             <li>
@@ -66,35 +48,33 @@ const Home: React.FC = () => {
               <a href="http://localhost:3000">Contato</a>
             </li>
           </ul>
-        </footer>
+        </BackgroundFooter>
       </Background>
       <Content>
-        <header>
+        <ContentHeader>
           <FiArrowLeft color="#7081fa" size="25" />
-          <Link to="/">Voltar para login</Link>
-        </header>
-        <main>
-          <h1>Redefinir sua senha</h1>
-          <form>
+          <Link to="/">Voltar para o login</Link>
+        </ContentHeader>
+        <FormContent>
+          <h1>Recuperar sua conta</h1>
+          <SignInForm>
             <div>
               <span>E-mail</span>
-              <input
+              <TextField
+                hasError={false}
                 type="text"
                 placeholder="seuemail@exemplo.com"
                 name="email"
                 id="email"
-                onChange={e => setLogin(e.target.value)}
               />
             </div>
-            <button type="submit" onClick={handleSignIn}>
-              Recuperar
-            </button>
-          </form>
-        </main>
-        <footer>
+            <Button type="submit">Recuperar</Button>
+          </SignInForm>
+        </FormContent>
+        <ContentFooter>
           <span>CREATED BY</span>
           <img src={vifeLogo} alt="VIFE Logo" />
-        </footer>
+        </ContentFooter>
       </Content>
     </Container>
   );

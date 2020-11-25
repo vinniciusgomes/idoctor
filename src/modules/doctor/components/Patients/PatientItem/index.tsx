@@ -1,9 +1,11 @@
 import { IPatient } from '@doctor/pages/Patients/interfaces';
 import React from 'react';
-import { FiMoreVertical, FiTrash, FiPenTool } from 'react-icons/fi';
 
 import avatarIcon from '@shared/assets/images/avatar.png';
-import { Container, Item } from './styles';
+import trashIcon from '@shared/assets/images/trash.svg';
+import pencilIcon from '@shared/assets/images/pencil.svg';
+
+import { ActionIcon, Container, Item } from './styles';
 
 const PatientsList: React.FC<IPatient> = props => (
   <Container id={props.id}>
@@ -14,8 +16,8 @@ const PatientsList: React.FC<IPatient> = props => (
       </div>
 
       <div>
-        <FiTrash color="#FA7070" size={20} />
-        <FiPenTool color="#D6DADF" size={20} />
+        <ActionIcon src={trashIcon} alt="trash" />
+        <ActionIcon src={pencilIcon} alt="pencil" />
       </div>
     </Item>
   </Container>
