@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Empty, message, Pagination, Skeleton } from 'antd';
 
 import Navbar from '@shared/components/Navbar';
-import PatientItem from '@doctor/components/Patients/PatientItem';
+import PatientItem from '@shared/components/PatientItem';
 
 import api from '@shared/services/api';
 import Loading from '@shared/components/Loading';

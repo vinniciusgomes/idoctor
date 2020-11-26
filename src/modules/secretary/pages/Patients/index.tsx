@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import Navbar from '@shared/components/Navbar';
 import api from '@shared/services/api';
 import Loading from '@shared/components/Loading';
-import PatientItem from '@doctor/components/Patients/PatientItem';
+import PatientItem from '@shared/components/PatientItem';
 import CreateUserModal from '@secretary/components/Patients/CreateUserModal';
 
 import { Container, ListContainer, Header, NewUserButton } from './styles';
