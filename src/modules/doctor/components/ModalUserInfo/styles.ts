@@ -2,15 +2,17 @@ import styled, { css } from 'styled-components';
 
 interface ITextFieldWrapperProps {
   row?: boolean;
+  width: number;
 }
 
-interface ITextFieldProps {
-  hasError: boolean;
-  label: string;
-}
+export const TextFieldRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const TextFieldWrapper = styled.div<ITextFieldWrapperProps>`
-  width: 100%;
+  width: ${props => props.width}px;
 
   ${props =>
     props.row &&
@@ -38,11 +40,20 @@ export const Container = styled.div`
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  width: 100%;
+export const ImageInput = styled.div`
+  width: 259px;
+  height: 354px;
+  background-color: #f4f5fa;
+  border: 1px dashed #b5bcc7;
+  border-radius: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+`;
 
-  margin-top: 50px;
+export const InputRowAlign = styled.div`
+  display: flex;
+  width: 848px;
+  justify-content: space-between;
 `;

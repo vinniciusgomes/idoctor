@@ -18,7 +18,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
   const [hasError, setHasError] = useState(false);
   const [patientDocument, setPatientDocument] = useState('');
   const [appointmentDate, setAppointmentDate] = useState(
-    format(new Date(), 'yyyy-MM-dd'),
+    format(new Date().setHours(24), 'yyyy-MM-dd'),
   );
   const [appointmentHour, setAppointmentHour] = useState(
     format(new Date(), 'HH:mm'),

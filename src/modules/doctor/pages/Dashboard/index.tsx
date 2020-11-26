@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-import { Empty, message, Skeleton } from 'antd';
+import { Empty, message, Modal, Skeleton } from 'antd';
 
 import welcomeImage from '@doctor/assets/images/dr-woman.svg';
 import Navbar from '@shared/components/Navbar';
@@ -10,8 +10,7 @@ import { useAuth } from '@shared/hooks/auth';
 import Loading from '@shared/components/Loading';
 import api from '@shared/services/api';
 import AppointmentsItem from '@doctor/components/Home/Appointments';
-
-import { IAppointments } from './interfaces';
+import ModalUserInfo from '@doctor/components/ModalUserInfo';
 
 import {
   AppointmentsListContainer,
@@ -24,12 +23,16 @@ import {
   Wrapper,
   ListContainer,
 } from './styles';
+import { IAppointmentsItemProps, IAllPatientData } from './interfaces';
 
 const Home: React.FC = () => {
   const { user, doctor } = useAuth();
-
   const [loading, setLoading] = useState(true);
-  const [appointments, setAppointments] = useState<IAppointments[]>([]);
+  const [appointments, setAppointments] = useState<IAppointmentsItemProps[]>(
+    [],
+  );
+  const [allPatientData, setAllPatientData] = useState<IAllPatientData>();
+  const [visible, setVisible] = useState(false);
 
   const getAppointments = useCallback(async () => {
     try {
@@ -49,13 +52,23 @@ const Home: React.FC = () => {
         return message.error(err.response.data.message);
       }
 
-      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error(
+        'Ocorreu um erro interno. Tente novamente mais tarde',
+      );
     }
-  }, [doctor]);
+  }, []);
+
+  const handleOpenModal = useCallback(async patientId => {
+    try {
+      const response = await api.get(`patients/${patientId}`);
+      setAllPatientData(response.data);
+      setVisible(true);
+    } catch (err) {}
+  }, []);
 
   useEffect(() => {
     getAppointments();
-  }, [getAppointments]);
+  }, []);
 
   return (
     <Navbar pageSelected="dashboard">
@@ -123,6 +136,7 @@ const Home: React.FC = () => {
                             start_time={appointment.start_time}
                             status={appointment.status}
                             type={appointment.type}
+                            handleOpenModal={handleOpenModal}
                           />
                         );
                       }
@@ -132,6 +146,15 @@ const Home: React.FC = () => {
               </AppointmentsListContainer>
             </ContentWrapper>
           </Wrapper>
+          <Modal
+            centered
+            visible={visible}
+            onCancel={() => setVisible(false)}
+            width={1300}
+            footer={false}
+          >
+            <ModalUserInfo patient={allPatientData} />
+          </Modal>
         </Container>
       )}
     </Navbar>

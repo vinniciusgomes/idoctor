@@ -1,26 +1,30 @@
 import React from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
-
-import avatarIcon from '@shared/assets/images/avatar.png';
-import { IAppointments } from '@doctor/pages/Dashboard/interfaces';
-import { Container, Item } from './styles';
 import { format } from 'date-fns';
 
-const AppointmentsItem: React.FC<IAppointments> = props => {
-  const patientData = props.patient;
+import avatarIcon from '@shared/assets/images/avatar.png';
+
+import { Container, Item } from './styles';
+import { IAppointmentsItemProps } from './interfaces';
+
+const AppointmentsItem: React.FC<IAppointmentsItemProps> = props => {
+  const patient = props.patient;
 
   return (
-    <Container className="mb-3">
+    <Container
+      className="mb-3"
+      onClick={() => props.handleOpenModal(patient.id)}
+    >
       <Item>
         <div>
           <img
-            src={patientData.avatar ? patientData.avatar : avatarIcon}
-            alt={patientData.name}
+            src={patient.avatar ? patient.avatar : avatarIcon}
+            alt={patient.name}
           />
-          <span>{patientData.name}</span>
+          <span>{patient.name}</span>
         </div>
         <div>
-          <span>{patientData.phone}</span>
+          <span>{patient.phone}</span>
         </div>
         <div>
           <span>

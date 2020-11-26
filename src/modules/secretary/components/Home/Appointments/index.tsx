@@ -1,12 +1,12 @@
 import React from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
-
-import avatarIcon from '@shared/assets/images/avatar.png';
-import { IAppointments } from '@doctor/pages/Dashboard/interfaces';
-import { Container, Item } from './styles';
 import { format } from 'date-fns';
 
-const AppointmentsItem: React.FC<IAppointments> = props => {
+import avatarIcon from '@shared/assets/images/avatar.png';
+import { Container, Item } from './styles';
+import { IAppointmentsItemProps } from './interfaces';
+
+const AppointmentsItem: React.FC<IAppointmentsItemProps> = props => {
   const patient = props.patient;
   const doctor = props.doctor;
 

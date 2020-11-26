@@ -17,6 +17,7 @@
     "connected-react-router": "^6.8.0",
     "customize-cra": "^1.0.0",
     "date-fns": "^2.16.1",
+    "formik": "^2.2.5",
     "history": "^5.0.0",
     "lottie-react-web": "^2.2.2",
     "polished": "^3.6.6",
@@ -27,7 +28,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.1.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.31.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

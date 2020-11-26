@@ -1,25 +1,8 @@
-export interface IAppointmentsItemProps {
-  id: string;
-  date: string;
-  start_time: string;
-  status: number;
-  type: number;
-  patient: {
-    id: string;
-    avatar: string;
-    name: string;
-    email: string;
-    phone: string;
-    appointments: any;
-  };
-  doctor: {
-    id: string;
-    speciality: string;
-    user: { name: string };
-  };
+export interface IModalUserInfo {
+  patient: IPatient | undefined;
 }
 
-export interface IAllPatientData {
+export interface IPatient {
   id: string;
   name: string;
   email: string;

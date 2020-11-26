@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-import { IAppointments } from '@doctor/pages/Dashboard/interfaces';
+import { IAppointmentsItemProps } from '@doctor/pages/Dashboard/interfaces';
 
 import {
   Container,
@@ -52,7 +52,7 @@ const dayList = [
 ];
 
 interface ICalendarProps {
-  appointments: IAppointments[];
+  appointments: IAppointmentsItemProps[];
 }
 
 const Calendar: React.FC<ICalendarProps> = ({ appointments }) => (

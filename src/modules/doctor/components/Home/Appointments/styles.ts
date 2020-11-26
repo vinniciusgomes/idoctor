@@ -4,6 +4,8 @@ export const Container = styled.div`
   flex: 1;
 
   margin-bottom: 20px;
+
+  cursor: pointer;
 `;
 
 export const Item = styled.li`

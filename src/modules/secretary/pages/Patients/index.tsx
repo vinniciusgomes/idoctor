@@ -1,18 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Empty, message, Pagination, Skeleton } from 'antd';
+import { Empty, message, Pagination, Skeleton, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 import Navbar from '@shared/components/Navbar';
-import PatientItem from '@doctor/components/Patients/PatientItem';
-
 import api from '@shared/services/api';
 import Loading from '@shared/components/Loading';
+import PatientItem from '@doctor/components/Patients/PatientItem';
+import CreateUserModal from '@secretary/components/Patients/CreateUserModal';
 
 import { Container, ListContainer, Header, NewUserButton } from './styles';
 import { IPaginationProperties, IPatient } from './interfaces';
-import Modal from 'antd/lib/modal/Modal';
-import CreateUserModal from '@secretary/components/Patients/CreateUserModal';
-import TextField from '@shared/components/TextField';
 
 const Patients: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -88,7 +85,6 @@ const Patients: React.FC = () => {
                 <span>Adicionar paciente</span>
                 <PlusOutlined />
               </NewUserButton>
-
             </div>
           </Header>
 
