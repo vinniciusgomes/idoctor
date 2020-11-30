@@ -29,4 +29,5 @@ export interface ICreateAppointmentModal {
   doctorId: string;
   doctorName: string;
   close(): void;
+  getAppointments(): void;
 }

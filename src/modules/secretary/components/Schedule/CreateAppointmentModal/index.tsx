@@ -14,6 +14,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
   doctorId,
   doctorName,
   close,
+  getAppointments,
 }) => {
   const [hasError, setHasError] = useState(false);
   const [patientDocument, setPatientDocument] = useState('');
@@ -61,6 +62,7 @@ const CreateAppointmentModal: React.FC<ICreateAppointmentModal> = ({
             if (response.data.id) {
               message.success('Consulta agendada com sucesso!');
               handleResetForm();
+              getAppointments();
               close();
             }
           } else {

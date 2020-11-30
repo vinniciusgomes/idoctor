@@ -120,6 +120,7 @@ const Schedule: React.FC = () => {
           <CreateAppointmentModal
             doctorId={doctorId}
             doctorName={doctorName}
+            getAppointments={() => getAppointments()}
             close={() => setVisible(false)}
           />
         </Modal>
