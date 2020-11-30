@@ -1,6 +1,7 @@
 import React from 'react';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
-import avatarIcon from '@shared/assets/images/avatar.png';
 import notificationIcon from '@shared/assets/images/notification-icon.svg';
 import { useAuth } from '@shared/hooks/auth';
 
@@ -19,7 +20,11 @@ const Header: React.FC<UserInfo> = () => {
         <img src={notificationIcon} alt="notification icon" />
       </Notification>
       <strong>{user.name}</strong>
-      <img src={user.avatar ? user.avatar : avatarIcon} alt={user.name} />
+      {user.avatar ? (
+        <img src={user.avatar} alt={user.name} />
+      ) : (
+        <Avatar size={50} icon={<UserOutlined />} style={{ marginLeft: 20 }} />
+      )}
     </Container>
   );
 };

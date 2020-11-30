@@ -4,11 +4,13 @@ import { format } from 'date-fns';
 
 import avatarIcon from '@shared/assets/images/avatar.png';
 import { Container, Item } from './styles';
-import { IAppointmentsItemProps } from './interfaces';
+import { IAppointmentItemProps } from './interfaces';
 
-const AppointmentsItem: React.FC<IAppointmentsItemProps> = props => {
+const AppointmentItem: React.FC<IAppointmentItemProps> = props => {
   const patient = props.patient;
   const doctor = props.doctor;
+
+  const appointmentHour = props.start_time.split(':');
 
   return (
     <Container className="mb-3">
@@ -25,7 +27,8 @@ const AppointmentsItem: React.FC<IAppointmentsItemProps> = props => {
         </div>
         <div>
           <span>
-            {format(new Date(props.date), 'dd/MM/yy')} ás {props.start_time}
+            {format(new Date(props.date).setHours(24), 'dd/MM/yy')} ás{' '}
+            {`${appointmentHour[0]}:${appointmentHour[1]}`}
           </span>
         </div>
         <div>
@@ -37,4 +40,4 @@ const AppointmentsItem: React.FC<IAppointmentsItemProps> = props => {
   );
 };
 
-export default AppointmentsItem;
+export default AppointmentItem;

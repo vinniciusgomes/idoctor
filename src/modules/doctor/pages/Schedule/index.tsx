@@ -21,7 +21,7 @@ const Schedule: React.FC = () => {
       let listData: IEvent[] = [];
 
       appointments.map(appointment => {
-        const formattedDay = format(new Date(appointment.date), 'dd');
+        const formattedDay = format(new Date(appointment.date).setHours(24), 'dd');
 
         if (parseInt(formattedDay) === value.date()) {
           listData = [

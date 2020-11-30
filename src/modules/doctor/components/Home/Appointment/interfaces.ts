@@ -1,4 +1,4 @@
-export interface IAppointmentsItemProps {
+export interface IAppointmentItemProps {
   id: string;
   date: string;
   start_time: string;

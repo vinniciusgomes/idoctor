@@ -1,4 +1,3 @@
-import { IPatient } from '@doctor/pages/Patients/interfaces';
 import React from 'react';
 
 import avatarIcon from '@shared/assets/images/avatar.png';
@@ -6,6 +5,7 @@ import trashIcon from '@shared/assets/images/trash.svg';
 import pencilIcon from '@shared/assets/images/pencil.svg';
 
 import { ActionIcon, Container, Item } from './styles';
+import { IPatient } from './interface';
 
 const PatientsList: React.FC<IPatient> = props => (
   <Container id={props.id}>

@@ -9,7 +9,7 @@ import Navbar from '@shared/components/Navbar';
 import { useAuth } from '@shared/hooks/auth';
 import Loading from '@shared/components/Loading';
 import api from '@shared/services/api';
-import AppointmentsItem from '@doctor/components/Home/Appointments';
+import AppointmentItem from '@doctor/components/Home/Appointment';
 import ModalUserInfo from '@doctor/components/ModalUserInfo';
 
 import {
@@ -127,7 +127,7 @@ const Home: React.FC = () => {
                     {appointments.map((appointment, index) => {
                       if (index <= 2) {
                         return (
-                          <AppointmentsItem
+                          <AppointmentItem
                             key={appointment.id}
                             id={appointment.id}
                             date={appointment.date}

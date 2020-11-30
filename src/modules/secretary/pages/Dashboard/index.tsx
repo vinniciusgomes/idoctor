@@ -9,7 +9,7 @@ import Navbar from '@shared/components/Navbar';
 import { useAuth } from '@shared/hooks/auth';
 import Loading from '@shared/components/Loading';
 import api from '@shared/services/api';
-import AppointmentsItem from '@secretary/components/Home/Appointments';
+import AppointmentItem from '@secretary/components/Home/Appointment';
 
 import { IAppointments } from './interfaces';
 
@@ -34,10 +34,7 @@ const Home: React.FC = () => {
   const getAppointments = useCallback(async () => {
     try {
       const response = await api.get(
-        `appointments/?date=${format(
-          new Date(),
-          'yyyy/MM/dd',
-        )}&limit=4`,
+        `appointments/?date=${format(new Date(), 'yyyy/MM/dd')}&limit=4`,
       );
 
       setAppointments(response.data);
@@ -49,7 +46,9 @@ const Home: React.FC = () => {
         return message.error(err.response.data.message);
       }
 
-      return message.error('Ocorreu um erro interno. Tente novamente mais tarde');
+      return message.error(
+        'Ocorreu um erro interno. Tente novamente mais tarde',
+      );
     }
   }, [doctor]);
 
@@ -115,7 +114,7 @@ const Home: React.FC = () => {
                     {appointments.map((appointment, index) => {
                       if (index <= 2) {
                         return (
-                          <AppointmentsItem
+                          <AppointmentItem
                             key={appointment.id}
                             id={appointment.id}
                             date={appointment.date}

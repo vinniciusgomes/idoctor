@@ -99,10 +99,9 @@ const Patients: React.FC = () => {
                   Mostrando <b>{patients.length}</b> de{' '}
                   <b>{paginationProperties.numberOfPatients}</b> pacientes
                 </span>
-
                 <Pagination
                   defaultCurrent={1}
-                  total={paginationProperties.numberOfPages}
+                  total={paginationProperties.numberOfPatients}
                   onChange={page => setPageNumber(page)}
                 />
               </footer>

@@ -117,7 +117,7 @@ const Patients: React.FC = () => {
 
                 <Pagination
                   defaultCurrent={1}
-                  total={paginationProperties.numberOfPages}
+                  total={paginationProperties.numberOfPatients}
                   onChange={page => setPageNumber(page)}
                 />
               </footer>

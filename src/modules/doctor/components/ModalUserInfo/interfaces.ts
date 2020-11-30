@@ -28,3 +28,9 @@ export interface IPatient {
   created_at: string;
   updated_at: string;
 }
+
+export interface IReportData {
+  data: {
+    record: string;
+  };
+}

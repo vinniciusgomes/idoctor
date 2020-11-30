@@ -1,19 +1,59 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import TextField from '@shared/components/TextField';
+import TextArea from '@shared/components/TextArea';
+import Button from '@shared/components/Button';
 
 import addIcon from '@shared/assets/images/add.svg';
 
 import {
   Container,
+  Form,
   ImageInput,
   InputRowAlign,
   TextFieldRow,
   TextFieldWrapper,
 } from './styles';
-import { IModalUserInfo } from './interfaces';
+import { IModalUserInfo, IReportData } from './interfaces';
+import api from '@shared/services/api';
+import { format } from 'date-fns';
+import { useAuth } from '@shared/hooks/auth';
 
 const ModalUserInfo: React.FC<IModalUserInfo> = ({ patient }) => {
+  const [medicalReport, setMedicalReport] = useState('');
+  const { doctor } = useAuth();
+
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault();
+
+      try {
+        api.post('patients/medical-record', {
+          patient_id: patient?.id,
+          date: format(new Date(), 'yyyy-MM-dd'),
+          record: medicalReport,
+          doctor_id: doctor?.id,
+        });
+      } catch (err) {}
+    },
+
+    [medicalReport],
+  );
+
+  const handleGetMedicalReport = useCallback(async () => {
+    try {
+      const response: IReportData = await api.get(
+        `patients/${patient?.id}/medical-record`,
+      );
+
+      setMedicalReport(response.data.record);
+    } catch (err) {}
+  }, []);
+
+  useEffect(() => {
+    handleGetMedicalReport();
+  }, []);
+
   return (
     <Container>
       <TextFieldRow>
@@ -203,6 +243,16 @@ const ModalUserInfo: React.FC<IModalUserInfo> = ({ patient }) => {
           <TextField disabled label="UF" name="state" value={patient?.fu} />
         </TextFieldWrapper>
       </TextFieldRow>
+      <Form onSubmit={handleSubmit}>
+        <TextFieldWrapper>
+          <TextArea
+            label="Prontuário"
+            value={medicalReport}
+            onChange={e => setMedicalReport(e.target.value)}
+          />
+        </TextFieldWrapper>
+        <Button type="submit">Salvar prontuário</Button>
+      </Form>
     </Container>
   );
 };

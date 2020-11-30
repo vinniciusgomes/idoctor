@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface ITextFieldWrapperProps {
   row?: boolean;
-  width: number;
+  width?: number;
 }
 
 export const TextFieldRow = styled.div`
@@ -12,7 +12,7 @@ export const TextFieldRow = styled.div`
 `;
 
 export const TextFieldWrapper = styled.div<ITextFieldWrapperProps>`
-  width: ${props => props.width}px;
+  width: ${props => (props.width ? props.width + 'px' : '100%')};
 
   ${props =>
     props.row &&
@@ -56,4 +56,17 @@ export const InputRowAlign = styled.div`
   display: flex;
   width: 848px;
   justify-content: space-between;
+`;
+
+export const Form = styled.form`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    margin-top: 20px;
+  }
 `;
