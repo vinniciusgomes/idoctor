@@ -28,15 +28,6 @@
 
 <h4 align="center">A system that organizes and streamlines your clinic, has more practicality in your day to day with the software for clinics easier to use. We want your clinic to succeed as much as you do!</h4>
 
-<p align="center">
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#rocket-Technologies">Technologies</a> •
-  <a href="#team">Team</a> •
-  <a href="https://github.com/vinniciusgomes/idoctor-api">API</a> •
-  <a href="#-layout">Layout</a> •
-  <a href="#memo-license">License</a>
-</p>
-
 ![screenshot](.github/idoctor.png)
 
 
@@ -46,7 +37,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Node
 
 From your command line:
 
-### Install API 
+### Install [API](https://github.com/vinniciusgomes/idoctor-api) 
 
 ```bash
 # Clone this repository
