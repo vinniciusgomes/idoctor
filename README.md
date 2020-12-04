@@ -30,17 +30,44 @@
 
 <p align="center">
   <a href="#how-to-use">How To Use</a> •
-  <a href="#technologies">Technologies</a> •
+  <a href="#rocket-Technologies">Technologies</a> •
   <a href="#team">Team</a> •
   <a href="https://github.com/vinniciusgomes/idoctor-api">API</a> •
-  <a href="https://xd.adobe.com/view/04daba29-d4ec-4c17-b03f-80bd5df2362c-5189/?fullscreen">Design</a> 
+  <a href="#-layout">Layout</a> •
+  <a href="#memo-license">License</a>
 </p>
 
 ![screenshot](.github/idoctor.png)
 
-## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+## :information_source: How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js][nodejs] + [Yarn][yarn] installed on your computer.
+
+From your command line:
+
+### Install API 
+
+```bash
+# Clone this repository
+$ git clone https://github.com/vinniciusgomes/idoctor-api
+
+# Go into the repository
+$ cd idoctor-api
+
+# Install dependencies
+$ yarn install
+
+# Run Migrates
+$ yarn typeorm migration:run
+
+# Start server
+$ yarn dev
+
+# running on port 3333
+```
+
+### Install Front-end
 
 ```bash
 # Clone this repository
@@ -50,13 +77,15 @@ $ git clone https://github.com/vinniciusgomes/idoctor
 $ cd idoctor
 
 # Install dependencies
-$ npm install
+$ yarn install
 
-# Run the app
-$ npm start
+# Run
+$ yarn start
+
+# running on port 3000
 ```
 
-## Technologies 
+## :rocket: Technologies
 
 This software uses these packages:
 
@@ -69,15 +98,14 @@ This software uses these packages:
 - [Axios](https://github.com/axios/axios)
 - [Lottie](https://airbnb.design/lottie/)
 
-## Team
+## 🔖 Layout
 
-[![Vinnicius Gomes](https://avatars1.githubusercontent.com/u/28509313?v=3&s=144)](https://github.com/vinniciusgomes)  | [![Quandl.com](https://avatars1.githubusercontent.com/u/15986485?v=3&s=144)](https://github.com/felipens/)
----|---
-[Vinnicius Gomes ](https://github.com/vinniciusgomes) |[Felipe Novais](https://github.com/felipens)
-Front End | Back End
+To access the layout use [AdobeXD](https://xd.adobe.com/view/04daba29-d4ec-4c17-b03f-80bd5df2362c-5189/?fullscreen).
+
+![screenshot](.github/home.png)
 
 
-## How to contribute
+## 🤔 How to contribute
 
 -  Make a fork;
 -  Create a branck with your feature: `git checkout -b my-feature`;
@@ -86,7 +114,16 @@ Front End | Back End
 
 After merging your receipt request to done, you can delete a branch from yours.
 
-## License
+
+## Team
+
+[![Vinnicius Gomes](https://avatars1.githubusercontent.com/u/28509313?v=3&s=144)](https://github.com/vinniciusgomes)  | [![Quandl.com](https://avatars1.githubusercontent.com/u/15986485?v=3&s=144)](https://github.com/felipens/)
+---|---
+[Vinnicius Gomes ](https://github.com/vinniciusgomes) |[Felipe Novais](https://github.com/felipens)
+Front End | Back End
+
+
+## :memo: License
 
 This project is under the MIT license. See the [LICENSE](https://github.com/vinniciusgomes/idoctor/blob/master/LICENSE) for details.
 
