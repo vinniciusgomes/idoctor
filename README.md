@@ -13,7 +13,8 @@
   <a href="#how-to-use">How To Use</a> •
   <a href="#technologies">Technologies</a> •
   <a href="#team">Team</a> •
-  <a href="https://github.com/vinniciusgomes/idoctor-api">API</a> 
+  <a href="https://github.com/vinniciusgomes/idoctor-api">API</a> •
+  <a href="https://xd.adobe.com/view/04daba29-d4ec-4c17-b03f-80bd5df2362c-5189/?fullscreen">Design</a> 
 </p>
 
 ![screenshot](.github/idoctor.png)
