@@ -12,10 +12,11 @@
 <p align="center">
   <a href="#how-to-use">How To Use</a> •
   <a href="#technologies">Technologies</a> •
-  <a href="#team">Team</a> 
+  <a href="#team">Team</a> •
+  <a href="https://github.com/vinniciusgomes/idoctor-api">API</a> 
 </p>
 
-![screenshot](.github/home.png)
+![screenshot](.github/idoctor.png)
 
 ## How To Use
 
