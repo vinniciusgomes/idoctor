@@ -19,9 +19,12 @@
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  
+   <a href="https://github.com/vinniciusgomes/idoctor/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/vinniciusgomes/idoctor?style=social">
+  </a>
 </p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
 <h4 align="center">A system that organizes and streamlines your clinic, has more practicality in your day to day with the software for clinics easier to use. We want your clinic to succeed as much as you do!</h4>
 
@@ -72,3 +75,28 @@ This software uses these packages:
 ---|---
 [Vinnicius Gomes ](https://github.com/vinniciusgomes) |[Felipe Novais](https://github.com/felipens)
 Front End | Back End
+
+
+## How to contribute
+
+-  Make a fork;
+-  Create a branck with your feature: `git checkout -b my-feature`;
+-  Commit changes: `git commit -m 'feat: My new feature'`;
+-  Make a push to your branch: `git push origin my-feature`.
+
+After merging your receipt request to done, you can delete a branch from yours.
+
+## License
+
+This project is under the MIT license. See the [LICENSE](https://github.com/vinniciusgomes/idoctor/blob/master/LICENSE) for details.
+
+
+[nodejs]: https://nodejs.org/
+[typescript]: https://www.typescriptlang.org/
+[expo]: https://expo.io/
+[reactjs]: https://reactjs.org
+[rn]: https://facebook.github.io/react-native/
+[yarn]: https://yarnpkg.com/
+
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
