@@ -5,6 +5,22 @@
   <br>
 </h1>
 
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vinniciusgomes/idoctor">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/vinniciusgomes/idoctor">
+
+  <a href="https://github.com/vinniciusgomes/idoctor/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vinniciusgomes/idoctor">
+  </a>
+
+  <a href="https://github.com/vinniciusgomes/idoctor/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/vinniciusgomes/idoctor.svg">
+  </a>
+
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
+
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
 <h4 align="center">A system that organizes and streamlines your clinic, has more practicality in your day to day with the software for clinics easier to use. We want your clinic to succeed as much as you do!</h4>
