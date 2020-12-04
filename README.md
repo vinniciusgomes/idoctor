@@ -54,3 +54,4 @@ This software uses these packages:
 [![Vinnicius Gomes](https://avatars1.githubusercontent.com/u/28509313?v=3&s=144)](https://github.com/vinniciusgomes)  | [![Quandl.com](https://avatars1.githubusercontent.com/u/15986485?v=3&s=144)](https://github.com/felipens/)
 ---|---
 [Vinnicius Gomes ](https://github.com/vinniciusgomes) |[Felipe Novais](https://github.com/felipens)
+Front End | Back End
