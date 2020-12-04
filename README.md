@@ -58,7 +58,7 @@ $ yarn dev
 # running on port 3333
 ```
 
-### Install Front-end
+### Install FrontEnd
 
 ```bash
 # Clone this repository
