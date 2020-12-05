@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://idoctor.vercel.app"><img src=".github/logo.svg" alt="logo" width="200"></a>
+  <a href="https://idoctor.vercel.app"><img src=".github/logo.png" alt="logo" width="200"></a>
   <br>
 </h1>
 
@@ -117,14 +117,6 @@ Front End | Back End
 ## :memo: License
 
 This project is under the MIT license. See the [LICENSE](https://github.com/vinniciusgomes/idoctor/blob/master/LICENSE) for details.
-
-
-[nodejs]: https://nodejs.org/
-[typescript]: https://www.typescriptlang.org/
-[expo]: https://expo.io/
-[reactjs]: https://reactjs.org
-[rn]: https://facebook.github.io/react-native/
-[yarn]: https://yarnpkg.com/
 
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
