@@ -76,6 +76,11 @@ $ yarn start
 # running on port 3000
 ```
 
+<b>Logins:</b><br>
+- Doctor: doctor@email.com - Password: 123456<br>
+- Secretary: secretary@email.com - Password: 123456<br>
+- Admin: manager@email.com - Password: 123456<br>
+
 ## :rocket: Technologies
 
 This software uses these packages:
