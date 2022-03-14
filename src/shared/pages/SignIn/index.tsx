@@ -129,10 +129,6 @@ const Home: React.FC = () => {
           </SignInForm>
           <Link to="/recuperar-senha">Esqueci minha senha</Link>
         </FormContent>
-        <ContentFooter>
-          <span>CREATED BY</span>
-          <img src={vifeLogo} alt="VIFE Logo" />
-        </ContentFooter>
       </Content>
     </Container>
   );
